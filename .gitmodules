@@ -1,0 +1,3 @@
+[submodule "capstone-backend"]
+	path = capstone-backend
+	url = https://github.com/FullstackAcademy/capstone-backend.git
