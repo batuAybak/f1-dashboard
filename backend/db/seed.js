@@ -8,6 +8,8 @@ await db.end();
 console.log("🌱 Database seeded.");
 
 async function seed() {
+  const demoUser = await createUser("demo_user", "demo_password");
+
   // Fetch the drivers from the API
   const drivers = await fetch(
     "https://api.openf1.org/v1/drivers?session_key=9912"
@@ -39,10 +41,12 @@ async function seed() {
     );
   }
 
-  //Since there are 2 drivers from the same team, 
+  //Since there are 2 drivers from the same team,
   //we need to get the unique team names and their colours
-  const teams = [...new Set(driversData.map(driver => driver.team_name))];
-  const teamColors = [...new Set(driversData.map(driver => driver.team_colour))];
+  const teams = [...new Set(driversData.map((driver) => driver.team_name))];
+  const teamColors = [
+    ...new Set(driversData.map((driver) => driver.team_colour)),
+  ];
   // Iterate through the unique team names and their colours and insert them into the database
   for (let i = 0; i < teams.length; i++) {
     await db.query(
@@ -52,5 +56,4 @@ async function seed() {
       [teams[i], teamColors[i]]
     );
   }
-
 }
