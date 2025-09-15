@@ -9,13 +9,17 @@ console.log("🌱 Database seeded.");
 
 async function seed() {
   // Fetch the drivers from the API
-  const drivers = await fetch('https://api.openf1.org/v1/drivers?session_key=9912');
+  const drivers = await fetch(
+    "https://api.openf1.org/v1/drivers?session_key=9912"
+  );
   const driversData = await drivers.json();
   // Push country codes into the driver objects
   driversData.map((driver, index) => {
     driver.country_code = country_codes[index];
-    if (driver.first_name === 'Franco') { //One driver has no img file from the api, so manually pushing it.
-      driver.headshot_url = "https://media.formula1.com/image/upload/c_fill,g_face,w_150,h_150/q_auto/f_png/v1740000000/common/f1/2025/alpine/fracol01/2025alpinefracol01right.webp";
+    if (driver.first_name === "Franco") {
+      //One driver has no img file from the api, so manually pushing it.
+      driver.headshot_url =
+        "https://media.formula1.com/image/upload/c_fill,g_face,w_150,h_150/q_auto/f_png/v1740000000/common/f1/2025/alpine/fracol01/2025alpinefracol01right.webp";
     }
   });
 
