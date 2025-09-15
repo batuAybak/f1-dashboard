@@ -38,4 +38,19 @@ async function seed() {
       [firstName, lastName, teamName, driverNumber, countryCode, headShotUrl]
     );
   }
+
+  //Since there are 2 drivers from the same team, 
+  //we need to get the unique team names and their colours
+  const teams = [...new Set(driversData.map(driver => driver.team_name))];
+  const teamColors = [...new Set(driversData.map(driver => driver.team_colour))];
+  // Iterate through the unique team names and their colours and insert them into the database
+  for (let i = 0; i < teams.length; i++) {
+    await db.query(
+      `INSERT INTO teams (team_name, team_color)
+       VALUES ($1, $2)
+       `,
+      [teams[i], teamColors[i]]
+    );
+  }
+
 }
