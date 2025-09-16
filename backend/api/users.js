@@ -6,6 +6,7 @@ import { createUser, getUserByUsernameAndPassword } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
 import { createToken } from "#utils/jwt";
 import requireUser from "#middleware/requireUser";
+import { getUserFavorites } from "#db/queries/userFavorites";
 
 router
   .route("/register")
@@ -30,5 +31,6 @@ router
 
 router.route("/profile").get(requireUser, async (req, res) => {
   const user = req.user;
-  res.send(user);
+  const userFavorites = await getUserFavorites(user.id);
+  res.send({ user, userFavorites });
 });

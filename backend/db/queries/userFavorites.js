@@ -1,5 +1,16 @@
 import db from "#db/client";
 
+export async function getUserFavorites(userId) {
+  const SQL = `
+    SELECT user_id, driver_id, team_id
+    FROM favorite_drivers
+    JOIN favorite_teams USING (user_id)
+    WHERE user_id = $1
+    `;
+  const { rows: [favorites] } = await db.query(SQL, [userId]);
+  return favorites;
+}
+
 export async function userFavoriteDriver(userId, driverId) {
   const SQL = `
     INSERT INTO favorite_drivers (user_id, driver_id)
