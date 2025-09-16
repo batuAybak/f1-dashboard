@@ -1,6 +1,7 @@
 import db from "#db/client";
 import { createUser } from "#db/queries/users";
 import { country_codes } from "./countryCodes.js";
+import { remainingRaces } from "./raceCalendar.js";
 
 await db.connect();
 await seed();
@@ -54,6 +55,27 @@ async function seed() {
        VALUES ($1, $2)
        `,
       [teams[i], teamColors[i]]
+    );
+  }
+
+  // Insert calendar data into the database
+  for (const meeting of remainingRaces) {
+    await db.query(
+      `INSERT INTO calendar (circuit_short_name, meeting_code, location, country_code, country_name, meeting_name, meeting_official_name, gmt_offset, date_start, year)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+       `,
+      [
+        meeting.circuit_short_name,
+        meeting.meeting_code,
+        meeting.location,
+        meeting.country_code,
+        meeting.country_name,
+        meeting.meeting_name,
+        meeting.meeting_official_name,
+        meeting.gmt_offset,
+        meeting.date_start,
+        meeting.year
+      ]
     );
   }
 }
