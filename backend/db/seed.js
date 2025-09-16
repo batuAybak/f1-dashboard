@@ -8,7 +8,7 @@ await db.end();
 console.log("🌱 Database seeded.");
 
 async function seed() {
-  const demoUser = await createUser("demo_user", "demo_password");
+  const demoUser = await createUser("demo_user", "demo_password", "Demo", "User");
 
   // Fetch the drivers from the API
   const drivers = await fetch(

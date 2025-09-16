@@ -12,7 +12,7 @@ export async function createUser(username, password, firstName, lastName) {
   const hashedPassword = await bcrypt.hash(password, 10);
   const {
     rows: [user],
-  } = await db.query(sql, [username, hashedPassword]);
+  } = await db.query(sql, [username, hashedPassword, firstName, lastName]);
   return user;
 }
 
