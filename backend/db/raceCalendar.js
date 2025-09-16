@@ -1,4 +1,196 @@
-export const remainingRaces = [
+export const raceCalendar = [
+    {
+        "circuit_short_name": "Melbourne",
+        "meeting_code": "AUS",
+        "location": "Melbourne",
+        "country_code": "AUS",
+        "country_name": "Australia",
+        "meeting_name": "Australian Grand Prix",
+        "meeting_official_name": "FORMULA 1 LOUIS VUITTON AUSTRALIAN GRAND PRIX 2025",
+        "gmt_offset": "11:00:00",
+        "date_start": "2025-03-16T01:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Shanghai",
+        "meeting_code": "CHN",
+        "location": "Shanghai",
+        "country_code": "CHN",
+        "country_name": "China",
+        "meeting_name": "Chinese Grand Prix",
+        "meeting_official_name": "FORMULA 1 HEINEKEN CHINESE GRAND PRIX 2025",
+        "gmt_offset": "08:00:00",
+        "date_start": "2025-03-23T03:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Suzuka",
+        "meeting_code": "JPN",
+        "location": "Suzuka",
+        "country_code": "JPN",
+        "country_name": "Japan",
+        "meeting_name": "Japanese Grand Prix",
+        "meeting_official_name": "FORMULA 1 LENOVO JAPANESE GRAND PRIX 2025",
+        "gmt_offset": "09:00:00",
+        "date_start": "2025-04-06T02:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Sakhir",
+        "meeting_code": "BRN",
+        "location": "Sakhir",
+        "country_code": "BRN",
+        "country_name": "Bahrain",
+        "meeting_name": "Bahrain Grand Prix",
+        "meeting_official_name": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2025",
+        "gmt_offset": "03:00:00",
+        "date_start": "2025-04-11T13:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Jeddah",
+        "meeting_code": "KSA",
+        "location": "Jeddah",
+        "country_code": "KSA",
+        "country_name": "Saudi Arabia",
+        "meeting_name": "Saudi Arabian Grand Prix",
+        "meeting_official_name": "FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2025",
+        "gmt_offset": "03:00:00",
+        "date_start": "2025-04-20T13:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Miami",
+        "meeting_code": "USA",
+        "location": "Miami",
+        "country_code": "USA",
+        "country_name": "United States",
+        "meeting_name": "Miami Grand Prix",
+        "meeting_official_name": "FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2025",
+        "gmt_offset": "-04:00:00",
+        "date_start": "2025-05-04T16:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Imola",
+        "meeting_code": "ITA",
+        "location": "Imola",
+        "country_code": "ITA",
+        "country_name": "Italy",
+        "meeting_name": "Emilia Romagna Grand Prix",
+        "meeting_official_name": "FORMULA 1 AWS GRAN PREMIO DEL MADE IN ITALY E DELL'EMILIA-ROMAGNA 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-05-18T11:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Monte Carlo",
+        "meeting_code": "MON",
+        "location": "Monaco",
+        "country_code": "MON",
+        "country_name": "Monaco",
+        "meeting_name": "Monaco Grand Prix",
+        "meeting_official_name": "FORMULA 1 TAG HEUER GRAND PRIX DE MONACO 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-05-25T11:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Catalunya",
+        "meeting_code": "ESP",
+        "location": "Barcelona",
+        "country_code": "ESP",
+        "country_name": "Spain",
+        "meeting_name": "Spanish Grand Prix",
+        "meeting_official_name": "FORMULA 1 ARAMCO GRAN PREMIO DE ESPAÑA 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-05-01T11:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Montreal",
+        "meeting_code": "CAN",
+        "location": "Montréal",
+        "country_code": "CAN",
+        "country_name": "Canada",
+        "meeting_name": "Canadian Grand Prix",
+        "meeting_official_name": "FORMULA 1 PIRELLI GRAND PRIX DU CANADA 2025",
+        "gmt_offset": "-04:00:00",
+        "date_start": "2025-06-15T17:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Spielberg",
+        "meeting_code": "AUT",
+        "location": "Spielberg",
+        "country_code": "AUT",
+        "country_name": "Austria",
+        "meeting_name": "Austrian Grand Prix",
+        "meeting_official_name": "FORMULA 1 MSC CRUISES AUSTRIAN GRAND PRIX 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-06-29T11:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Silverstone",
+        "meeting_code": "GBR",
+        "location": "Silverstone",
+        "country_code": "GBR",
+        "country_name": "United Kingdom",
+        "meeting_name": "British Grand Prix",
+        "meeting_official_name": "FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2025",
+        "gmt_offset": "01:00:00",
+        "date_start": "2025-07-06T11:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Spa-Francorchamps",
+        "meeting_code": "BEL",
+        "location": "Spa-Francorchamps",
+        "country_code": "BEL",
+        "country_name": "Belgium",
+        "meeting_name": "Belgian Grand Prix",
+        "meeting_official_name": "FORMULA 1 MOËT & CHANDON BELGIAN GRAND PRIX 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-07-27T10:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Hungaroring",
+        "meeting_code": "HUN",
+        "location": "Budapest",
+        "country_code": "HUN",
+        "country_name": "Hungary",
+        "meeting_name": "Hungarian Grand Prix",
+        "meeting_official_name": "FORMULA 1 LENOVO HUNGARIAN GRAND PRIX 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-08-03T11:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Zandvoort",
+        "meeting_code": "NED",
+        "location": "Zandvoort",
+        "country_code": "NED",
+        "country_name": "Netherlands",
+        "meeting_name": "Dutch Grand Prix",
+        "meeting_official_name": "FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-08-31T10:30:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Monza",
+        "meeting_code": "ITA",
+        "location": "Monza",
+        "country_code": "ITA",
+        "country_name": "Italy",
+        "meeting_name": "Italian Grand Prix",
+        "meeting_official_name": "FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2025",
+        "gmt_offset": "02:00:00",
+        "date_start": "2025-09-07T11:30:00+00:00",
+        "year": 2025
+    },
     {
         "circuit_short_name": "Baku",
         "meeting_code": "AZE",
@@ -8,7 +200,7 @@ export const remainingRaces = [
         "meeting_name": "Azerbaijan Grand Prix",
         "meeting_official_name": "FORMULA 1 AZERBAIJAN GRAND PRIX 2025",
         "gmt_offset": "+04:00:00",
-        "date_start": "2025-09-19T09:30:00+00:00",
+        "date_start": "2025-09-21T09:30:00+00:00",
         "year": 2025
     },
     {
@@ -20,7 +212,7 @@ export const remainingRaces = [
         "meeting_name": "Singapore Grand Prix",
         "meeting_official_name": "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2025",
         "gmt_offset": "+08:00:00",
-        "date_start": "2025-10-03T10:00:00+00:00",
+        "date_start": "2025-10-05T10:00:00+00:00",
         "year": 2025
     },
     {
@@ -32,7 +224,7 @@ export const remainingRaces = [
         "meeting_name": "United States Grand Prix",
         "meeting_official_name": "FORMULA 1 PIRELLI UNITED STATES GRAND PRIX 2025",
         "gmt_offset": "-05:00:00",
-        "date_start": "2025-10-17T15:00:00+00:00",
+        "date_start": "2025-10-19T15:00:00+00:00",
         "year": 2025
     },
     {
@@ -44,7 +236,7 @@ export const remainingRaces = [
         "meeting_name": "Mexico City Grand Prix",
         "meeting_official_name": "FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2025",
         "gmt_offset": "-06:00:00",
-        "date_start": "2025-10-24T15:00:00+00:00",
+        "date_start": "2025-10-26T15:00:00+00:00",
         "year": 2025
     },
     {
@@ -56,7 +248,7 @@ export const remainingRaces = [
         "meeting_name": "São Paulo Grand Prix",
         "meeting_official_name": "FORMULA 1 LENOVO GRANDE PRÊMIO DE SÃO PAULO 2025",
         "gmt_offset": "-03:00:00",
-        "date_start": "2025-11-07T14:00:00+00:00",
+        "date_start": "2025-11-09T14:00:00+00:00",
         "year": 2025
     },
     {
@@ -68,7 +260,7 @@ export const remainingRaces = [
         "meeting_name": "Las Vegas Grand Prix",
         "meeting_official_name": "FORMULA 1 HEINEKEN SILVER LAS VEGAS GRAND PRIX 2025",
         "gmt_offset": "-08:00:00",
-        "date_start": "2025-11-20T05:00:00+00:00",
+        "date_start": "2025-11-22T05:00:00+00:00",
         "year": 2025
     },
     {
@@ -80,7 +272,7 @@ export const remainingRaces = [
         "meeting_name": "Qatar Grand Prix",
         "meeting_official_name": "FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2025",
         "gmt_offset": "+03:00:00",
-        "date_start": "2025-11-28T11:00:00+00:00",
+        "date_start": "2025-11-30T11:00:00+00:00",
         "year": 2025
     },
     {
@@ -92,7 +284,7 @@ export const remainingRaces = [
         "meeting_name": "Abu Dhabi Grand Prix",
         "meeting_official_name": "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2025",
         "gmt_offset": "+04:00:00",
-        "date_start": "2025-12-05T10:00:00+00:00",
+        "date_start": "2025-12-07T10:00:00+00:00",
         "year": 2025
     }
 ];
