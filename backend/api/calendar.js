@@ -1,4 +1,4 @@
-import { getAllRaces, getRaceByMeeting } from "#db/queries/calendar";
+import { getAllRaces, getRaceByCircuit } from "#db/queries/calendar";
 import express from "express";
 const calendarRouter = express.Router();
 export default calendarRouter;
@@ -8,13 +8,13 @@ calendarRouter.route("/").get(async (req, res) => {
   return res.send(races);
 });
 
-calendarRouter.param("meeting", async (req, res, next, meeting) => {
-  const race = await getRaceByMeeting(meeting);
+calendarRouter.param("circuit", async (req, res, next, circuit) => {
+  const race = await getRaceByCircuit(circuit);
   if (!race) return res.status(404).send("No race found");
   req.race = race;
   next();
 });
 
-calendarRouter.route("/:meeting").get(async (req, res) => {
+calendarRouter.route("/:circuit").get(async (req, res) => {
   return res.send(req.race);
 });

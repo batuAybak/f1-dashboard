@@ -9,12 +9,12 @@ export async function getAllRaces() {
   return races;
 }
 
-export async function getRaceByMeeting(meeting) {
+export async function getRaceByCircuit(circuit) {
   const SQL = `
     SELECT * 
     FROM calendar
-    WHERE meeting_key = $1
+    WHERE circuit_short_name = $1
     `;
-  const { rows: races } = await db.query(SQL, [meeting]);
+  const { rows: races } = await db.query(SQL, [circuit]);
   return races;
 }
