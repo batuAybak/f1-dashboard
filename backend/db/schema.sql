@@ -7,7 +7,9 @@ DROP TABLE IF EXISTS favorite_teams;
 CREATE TABLE users (
   id serial PRIMARY KEY,
   username text NOT NULL UNIQUE,
-  password text NOT NULL
+  password text NOT NULL,
+  first_name text NOT NULL,
+  last_name text NOT NULL
 );
 
 CREATE TABLE drivers (
