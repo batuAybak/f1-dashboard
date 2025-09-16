@@ -9,6 +9,7 @@ import cors from "cors";
 import morgan from "morgan";
 import driversRouter from "#api/drivers";
 import teamsRouter from "#api/teams";
+import calendarRouter from "#api/calendar";
 
 app.use(cors({ origin: process.env.CORS_ORIGIN ?? /localhost/ }));
 
@@ -22,8 +23,9 @@ app.use(getUserFromToken);
 app.get("/", (req, res) => res.send("Hello, World!"));
 
 app.use("/users", usersRouter);
-app.use('/drivers', driversRouter);
-app.use('/teams', teamsRouter);
+app.use("/drivers", driversRouter);
+app.use("/teams", teamsRouter);
+app.use("/calendar", calendarRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {
