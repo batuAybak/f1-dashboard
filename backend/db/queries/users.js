@@ -44,3 +44,15 @@ export async function getUserById(id) {
   } = await db.query(sql, [id]);
   return user;
 }
+
+export async function getUserFullName(firstName, lastName) {
+  const SQL = `
+  SELECT *
+  FROM users
+  WHERE first_name = $1 AND last_name = $2
+  `;
+  const {
+    rows: [user],
+  } = await db.query(SQL, [firstName, lastName]);
+  return user;
+}
