@@ -7,6 +7,8 @@ import getUserFromToken from "#middleware/getUserFromToken";
 import handlePostgresErrors from "#middleware/handlePostgresErrors";
 import cors from "cors";
 import morgan from "morgan";
+import driversRouter from "#api/drivers";
+import teamsRouter from "#api/teams";
 
 app.use(cors({ origin: process.env.CORS_ORIGIN ?? /localhost/ }));
 
@@ -20,6 +22,8 @@ app.use(getUserFromToken);
 app.get("/", (req, res) => res.send("Hello, World!"));
 
 app.use("/users", usersRouter);
+app.use('/drivers', driversRouter);
+app.use('/teams', teamsRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {

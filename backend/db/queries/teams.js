@@ -32,3 +32,13 @@ export async function getTeamByName(teamName) {
   } = await db.query(SQL, [teamName]);
   return team;
 }
+
+export async function getTeamDrivers(teamName) {
+  const SQL = `
+    SELECT * 
+    FROM drivers
+    WHERE team_name = $1
+    `;
+  const { rows: drivers } = await db.query(SQL, [teamName]);
+  return drivers;
+}
