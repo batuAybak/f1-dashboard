@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS drivers CASCADE;
 DROP TABLE IF EXISTS teams CASCADE;
 DROP TABLE IF EXISTS favorite_drivers;
 DROP TABLE IF EXISTS favorite_teams;
+DROP TABLE IF EXISTS calendar;
 
 CREATE TABLE users (
   id serial PRIMARY KEY,
@@ -38,3 +39,20 @@ CREATE TABLE favorite_teams (
   team_id integer REFERENCES teams(id) ON DELETE CASCADE,
   PRIMARY KEY (user_id, team_id)
 );
+
+CREATE TABLE calendar(
+  meeting_key serial PRIMARY KEY,
+  circuit_short_name text NOT NULL,
+  meeting_code text NOT NULL,
+  location text NOT NULL,
+  country_code text NOT NULL,
+  country_name text NOT NULL,
+  meeting_name text NOT NULL,
+  meeting_official_name text NOT NULL,
+  gmt_offset interval NOT NULL,
+  date_start timestamp with time zone NOT NULL,
+  year integer NOT NULL
+);
+
+-- Set starting value for meeting_key serial to 1269
+ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1269;
