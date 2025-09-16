@@ -54,5 +54,5 @@ CREATE TABLE calendar(
   year integer NOT NULL
 );
 
--- Set starting value for meeting_key serial to 1269
-ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1269;
+-- Set starting value for meeting_key serial to 1254
+ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1254;
