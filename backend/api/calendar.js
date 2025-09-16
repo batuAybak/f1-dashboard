@@ -1,14 +1,10 @@
-import {
-  getAllRaces,
-  getRaceByMeeting,
-  getRaceDetails,
-} from "#db/queries/calendar";
+import { getAllRaces, getRaceByMeeting } from "#db/queries/calendar";
 import express from "express";
 const calendarRouter = express.Router();
 export default calendarRouter;
 
 calendarRouter.route("/").get(async (req, res) => {
-  const races = await getRaceByOfficialName();
+  const races = await getAllRaces();
   return res.send(races);
 });
 
