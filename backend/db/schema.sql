@@ -25,7 +25,9 @@ CREATE TABLE drivers (
 CREATE TABLE teams(
   id serial PRIMARY KEY,
   team_name text NOT NULL UNIQUE,
-  team_color text NOT NULL
+  team_color text NOT NULL,
+  vehicle_image text NOT NULL,
+  team_logos text NOT NULL
 );
 
 CREATE TABLE favorite_drivers (
@@ -54,5 +56,5 @@ CREATE TABLE calendar(
   year integer NOT NULL
 );
 
--- Set starting value for meeting_key serial to 1269
-ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1269;
+-- Set starting value for meeting_key serial to 1254
+ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1254;

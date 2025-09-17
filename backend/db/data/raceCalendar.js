@@ -132,18 +132,6 @@ export const raceCalendar = [
         "year": 2025
     },
     {
-        "circuit_short_name": "Silverstone",
-        "meeting_code": "GBR",
-        "location": "Silverstone",
-        "country_code": "GBR",
-        "country_name": "United Kingdom",
-        "meeting_name": "British Grand Prix",
-        "meeting_official_name": "FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2025",
-        "gmt_offset": "01:00:00",
-        "date_start": "2025-07-06T11:30:00+00:00",
-        "year": 2025
-    },
-    {
         "circuit_short_name": "Spa-Francorchamps",
         "meeting_code": "BEL",
         "location": "Spa-Francorchamps",
@@ -285,6 +273,18 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2025",
         "gmt_offset": "+04:00:00",
         "date_start": "2025-12-07T10:00:00+00:00",
+        "year": 2025
+    },
+    {
+        "circuit_short_name": "Silverstone",
+        "meeting_code": "GBR",
+        "location": "Silverstone",
+        "country_code": "GBR",
+        "country_name": "United Kingdom",
+        "meeting_name": "British Grand Prix",
+        "meeting_official_name": "FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2025",
+        "gmt_offset": "01:00:00",
+        "date_start": "2025-07-06T11:30:00+00:00",
         "year": 2025
     }
 ];
