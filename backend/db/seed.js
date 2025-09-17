@@ -1,7 +1,8 @@
 import db from "#db/client";
 import { createUser } from "#db/queries/users";
-import { country_codes } from "./countryCodes.js";
-import { raceCalendar } from "./raceCalendar.js";
+import { country_codes } from "./data/countryCodes.js";
+import { vehicleImages } from "./data/vehicleImages.js";
+import { raceCalendar } from "./data/raceCalendar.js";
 
 await db.connect();
 await seed();
@@ -51,10 +52,10 @@ async function seed() {
   // Iterate through the unique team names and their colours and insert them into the database
   for (let i = 0; i < teams.length; i++) {
     await db.query(
-      `INSERT INTO teams (team_name, team_color)
-       VALUES ($1, $2)
+      `INSERT INTO teams (team_name, team_color, vehicle_image)
+       VALUES ($1, $2, $3)
        `,
-      [teams[i], teamColors[i]]
+      [teams[i], teamColors[i], vehicleImages[i]]
     );
   }
 
