@@ -18,7 +18,11 @@ export default function TeamsPage() {
       <h1>Teams</h1>
       <ul>
         {teams.map((team) => (
-          <li key={team.id} className="team-card">
+          <li
+            key={team.id}
+            className="team-card"
+            style={{ backgroundColor: `#${team.team_color}` }} //TODO remove style later
+          >
             <h2 className="team-name-header">{team.team_name}</h2>
             <div className="team-drivers">
               <ul>
@@ -39,6 +43,17 @@ export default function TeamsPage() {
               src={team.vehicle_image}
               alt={`${team.team_name} vehicle`}
               style={{ width: "200px", height: "auto" }} //TODO remove style later
+            />
+            <img
+              className="team-card-logo-image"
+              src={team.team_logos}
+              alt={`${team.team_name} logo`}
+              style={{
+                //TODO remove style later
+                width: "50px",
+                height: "auto",
+                backgroundColor: `#${team.team_color}`,
+              }}
             />
           </li>
         ))}
