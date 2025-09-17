@@ -26,7 +26,8 @@ CREATE TABLE teams(
   id serial PRIMARY KEY,
   team_name text NOT NULL UNIQUE,
   team_color text NOT NULL,
-  vehicle_image text NOT NULL
+  vehicle_image text NOT NULL,
+  team_logos text NOT NULL
 );
 
 CREATE TABLE favorite_drivers (
