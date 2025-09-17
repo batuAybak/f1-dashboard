@@ -3,7 +3,7 @@ import Layout from "./layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import DriversPage from "./drivers/DriversPage";
-import Teams from "./teams/Teams";
+import TeamsPage from "./teams/TeamsPage";
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/drivers" element={<DriversPage />} />
-        <Route path="/teams" element={<Teams />} />
+        <Route path="/teams" element={<TeamsPage />} />
       </Route>
     </Routes>
   );

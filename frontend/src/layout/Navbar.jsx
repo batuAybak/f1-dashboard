@@ -9,8 +9,8 @@ export default function Navbar() {
       <NavLink id="brand" to="/">
         <p>Home</p>
       </NavLink>
-      <NavLink to="/drivers">Drivers</NavLink>
-      <NavLink to="/teams">Teams</NavLink>
+      <NavLink to="/drivers">Drivers Page</NavLink>
+      <NavLink to="/teams">Teams Page</NavLink>
       <nav>
         {token ? (
           <button onClick={logout}>Log out</button>
