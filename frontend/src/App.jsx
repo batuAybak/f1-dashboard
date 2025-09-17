@@ -4,12 +4,13 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import DriversPage from "./components/drivers/DriversPage";
 import TeamsPage from "./components/teams/TeamsPage";
+import HomePage from "./components/HomePage";
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<p>Home page</p>} />
+        <Route index element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/drivers" element={<DriversPage />} />
