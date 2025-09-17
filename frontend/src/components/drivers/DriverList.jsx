@@ -1,4 +1,4 @@
-import useQuery from "../api/useQuery.js";
+import useQuery from "../../api/useQuery.js";
 
 export default function DriverList({ driver, teamName }) {
   const { data: teams, loading, error } = useQuery("/teams", "teams");
@@ -9,10 +9,7 @@ export default function DriverList({ driver, teamName }) {
   const team = teams.find((team) => team.team_name == teamName);
 
   return (
-    <li
-      className="driver-card"
-      style={{ backgroundColor: `#${team.team_color}` }}
-    >
+    <li className="driver-card" style={{ background: `#${team.team_color}` }}>
       <div className="driver-picture-number">
         <img
           src={driver?.headshot_url}

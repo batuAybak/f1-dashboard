@@ -1,5 +1,5 @@
-import DriverList from "./DriverList";
-import useQuery from "../api/useQuery.js";
+import DriverList from "./DriverList.jsx";
+import useQuery from "../../api/useQuery.js";
 
 export default function driversPage() {
   const { data, loading, error } = useQuery("/drivers", "drivers");

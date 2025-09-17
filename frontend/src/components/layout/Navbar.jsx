@@ -1,0 +1,31 @@
+import { NavLink } from "react-router";
+
+import { useAuth } from "../../auth/AuthContext";
+
+export default function Navbar() {
+  const { token, logout } = useAuth();
+  return (
+    <header id="navbar">
+      <section className="logo">
+        <img
+          src="https://thumbnail.imgbin.com/25/24/5/f1-logo-rsrQT67e_t.jpg"
+          alt="Formula 1 Logo"
+        />
+      </section>
+      <section className="navigation">
+        <NavLink id="brand" to="/">
+          <p>Home</p>
+        </NavLink>
+        <NavLink to="/drivers">Drivers Page</NavLink>
+        <NavLink to="/teams">Teams Page</NavLink>
+        <nav>
+          {token ? (
+            <button onClick={logout}>Log out</button>
+          ) : (
+            <NavLink to="/login">Log in</NavLink>
+          )}
+        </nav>
+      </section>
+    </header>
+  );
+}

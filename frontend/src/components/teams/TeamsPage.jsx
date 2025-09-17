@@ -1,4 +1,4 @@
-import useQuery from "../api/useQuery";
+import useQuery from "../../api/useQuery";
 
 export default function TeamsPage() {
   const { data: teams, loadingTeams, errorTeams } = useQuery("/teams", "teams");

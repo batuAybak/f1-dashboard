@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router";
-import Layout from "./layout/Layout";
+import Layout from "./components/layout/Layout";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import DriversPage from "./drivers/DriversPage";
-import TeamsPage from "./teams/TeamsPage";
+import DriversPage from "./components/drivers/DriversPage";
+import TeamsPage from "./components/teams/TeamsPage";
 
 export default function App() {
   return (

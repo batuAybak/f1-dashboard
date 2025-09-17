@@ -1,3 +1,27 @@
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));
+  /* background-color: linear-gradient(135deg, red, yellow, white); */
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+  align-items: center;
+  width: 50%;
+  margin-right: 10rem;
+}
+
+/* #brand {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-family: sans-serif;
+} */
+
 .driver-list {
   display: flex;
   flex-wrap: wrap;
