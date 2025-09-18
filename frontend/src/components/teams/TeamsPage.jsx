@@ -16,16 +16,22 @@ export default function TeamsPage() {
   return (
     <>
       <h1>Teams</h1>
-      <ul>
+      <ul className="teams-list">
         {teams.map((team) => (
-          <li
-            key={team.id}
-            className="team-card"
-            style={{ backgroundColor: `#${team.team_color}` }} //TODO remove style later
-          >
-            <h2 className="team-name-header">{team.team_name}</h2>
-            <div className="team-drivers">
-              <ul>
+          <>
+            <li
+              key={team.id}
+              className="team-card"
+              style={{ backgroundColor: `#${team.team_color}` }}
+            >
+              <h2 className="team-name-header">{team.team_name}</h2>
+              <img
+                className="team-card-logo-image"
+                src={team.team_logos}
+                alt={`${team.team_name} logo`}
+                style={{ backgroundColor: `#${team.team_color}` }}
+              />
+              <ul className="drivers-list">
                 {
                   // Added filtering to show only drivers of the current team (e.g. Mercedes drivers under Mercedes team)
                   drivers
@@ -37,25 +43,13 @@ export default function TeamsPage() {
                     ))
                 }
               </ul>
-            </div>
-            <img
-              className="team-card-vehicle-image"
-              src={team.vehicle_image}
-              alt={`${team.team_name} vehicle`}
-              style={{ width: "200px", height: "auto" }} //TODO remove style later
-            />
-            <img
-              className="team-card-logo-image"
-              src={team.team_logos}
-              alt={`${team.team_name} logo`}
-              style={{
-                //TODO remove style later
-                width: "50px",
-                height: "auto",
-                backgroundColor: `#${team.team_color}`,
-              }}
-            />
-          </li>
+              <img
+                className="team-card-vehicle-image"
+                src={team.vehicle_image}
+                alt={`${team.team_name} vehicle`}
+              />
+            </li>
+          </>
         ))}
       </ul>
     </>
