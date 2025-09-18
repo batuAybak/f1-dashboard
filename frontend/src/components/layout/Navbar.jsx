@@ -18,9 +18,12 @@ export default function Navbar() {
         </NavLink>
         <NavLink to="/drivers">Drivers Page</NavLink>
         <NavLink to="/teams">Teams Page</NavLink>
-        <nav>
+        <nav className="profile-nav">
           {token ? (
-            <button onClick={logout}>Log out</button>
+            <>
+              <NavLink to="/profile">Profile</NavLink>
+              <button onClick={logout}>Log out</button>
+            </>
           ) : (
             <NavLink to="/login">Log in</NavLink>
           )}

@@ -1,7 +1,7 @@
 import DriverList from "./DriverList.jsx";
 import useQuery from "../../api/useQuery.js";
 
-export default function driversPage() {
+export default function DriversPage() {
   const { data, loading, error } = useQuery("/drivers", "drivers");
 
   if (loading || !data) return <p>Loading...</p>;

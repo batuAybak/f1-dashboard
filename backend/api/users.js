@@ -6,17 +6,20 @@ import { createUser, getUserByUsernameAndPassword } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
 import { createToken } from "#utils/jwt";
 import requireUser from "#middleware/requireUser";
-import { getUserFavorites } from "#db/queries/userFavorites";
+import { getUserFavoriteDriver } from "#db/queries/userFavorites";
 
 router
   .route("/register")
-  .post(requireBody(["username", "password", 'first_name', 'last_name']), async (req, res) => {
-    const { username, password, first_name, last_name } = req.body;
-    const user = await createUser(username, password, first_name, last_name);
+  .post(
+    requireBody(["username", "password", "first_name", "last_name"]),
+    async (req, res) => {
+      const { username, password, first_name, last_name } = req.body;
+      const user = await createUser(username, password, first_name, last_name);
 
-    const token = await createToken({ id: user.id });
-    res.status(201).send(token);
-  });
+      const token = await createToken({ id: user.id });
+      res.status(201).send(token);
+    }
+  );
 
 router
   .route("/login")
@@ -31,6 +34,6 @@ router
 
 router.route("/profile").get(requireUser, async (req, res) => {
   const user = req.user;
-  const userFavorites = await getUserFavorites(user.id);
+  const userFavorites = await getUserFavoriteDriver(user.id);
   res.send({ user, userFavorites });
 });

@@ -1,17 +1,45 @@
 import db from "#db/client";
 
-export async function getUserFavorites(userId) {
+// export async function getUserFavorites(userId) {
+//   const SQL = `
+//     SELECT user_id, driver_id, team_id
+//     FROM favorite_drivers
+//     JOIN favorite_teams USING (user_id)
+//     WHERE user_id = $1
+//     `;
+//   const {
+//     rows: [favorites],
+//   } = await db.query(SQL, [userId]);
+//   return favorites;
+// }
+
+// TODO: Fix table so it returns driver details instead of driver id
+export async function getUserFavoriteDriver(userId) {
   const SQL = `
-    SELECT user_id, driver_id, team_id
-    FROM favorite_drivers
-    JOIN favorite_teams USING (user_id)
-    WHERE user_id = $1
-    `;
-  const { rows: [favorites] } = await db.query(SQL, [userId]);
-  return favorites;
+  SELECT user_id, driver_id
+  FROM favorite_drivers
+  WHERE user_id = $1
+  `;
+  const {
+    rows: [driver],
+  } = await db.query(SQL, [userId]);
+  return driver;
 }
 
-export async function userFavoriteDriver(userId, driverId) {
+// TODO: Fix table so it return team details instead of team id
+export async function getUserFavoriteTeam(userId) {
+  const SQL = `
+  SELECT user_id, team_id
+  FROM favorite_teams
+  WHERE user_id = $1
+  `;
+  const {
+    rows: [team],
+  } = await db.query(SQL, [userId]);
+  return team;
+}
+
+export async function addUserFavoriteDriver(userId, driverId) {
   const SQL = `
     INSERT INTO favorite_drivers (user_id, driver_id)
     VALUES ($1, $2)
@@ -23,7 +51,7 @@ export async function userFavoriteDriver(userId, driverId) {
   return favorite;
 }
 
-export async function userFavoriteTeam(userId, teamId) {
+export async function addUserFavoriteTeam(userId, teamId) {
   const SQL = `
     INSERT INTO favorite_teams (user_id, team_id)
     VALUES ($1, $2)
