@@ -1,0 +1,74 @@
+.driver-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.driver-card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 15rem;
+  height: 10rem;
+}
+
+.driver-picture-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.driver-headshot {
+  vertical-align: center;
+  border-radius: 50%;
+  object-fit: cover;
+  border-color: white;
+  border-style: solid;
+  width: 5rem;
+}
+
+.driver-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+.driver-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.driver-name {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+.driver-team {
+  font-style: italic;
+  color: white;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #ddd;
+}
+
+.driver-country {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #ddd;
+}

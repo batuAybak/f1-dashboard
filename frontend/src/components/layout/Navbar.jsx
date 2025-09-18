@@ -16,9 +16,9 @@ export default function Navbar() {
         <NavLink id="brand" to="/">
           <p>Home</p>
         </NavLink>
-        <NavLink to="/drivers">Drivers Page</NavLink>
-        <NavLink to="/teams">Teams Page</NavLink>
-        <NavLink to="/calendar">Calendar Page</NavLink>
+        <NavLink to="/drivers">Drivers</NavLink>
+        <NavLink to="/teams">Teams</NavLink>
+        <NavLink to="/calendar">Calendar</NavLink>
         <nav className="profile-nav">
           {token ? (
             <>

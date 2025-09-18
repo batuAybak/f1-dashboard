@@ -1,0 +1,60 @@
+.race-page {
+  position: relative;
+  display: inline-flex;
+}
+.race-images {
+  width: 90%;
+  padding-top: 1rem;
+  margin: auto;
+}
+
+.race-details {
+  display: grid;
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  left: 7rem;
+  max-width: 30%;
+  background-color: hsla(240, 85%, 10%, 0.5);
+}
+
+.race-name {
+  margin-inline: 1rem;
+  font-size: 1.75rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.race-country {
+  margin-inline: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.race-country-name {
+  color: white;
+  font-size: 1.25;
+  margin-top: 0;
+}
+
+.race-country-code {
+  color: white;
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.race-location {
+  color: white;
+  font-size: 1.25;
+  margin-inline: 1rem;
+}
+
+.race-date {
+  color: white;
+  font-size: 1.25;
+  margin-inline: 1rem;
+  margin-bottom: 1rem;
+}

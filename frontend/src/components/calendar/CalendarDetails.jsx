@@ -15,8 +15,23 @@ export default function GrandPrixDetails() {
   if (error) return <p>Error! {error}</p>;
 
   return (
-    <div>
-      <p>{data.circuit_short_name}</p>
+    <div className="race-page">
+      <img src={data.image} alt="Image link" className="race-images" />
+      <div className="race-details">
+        <h1 className="race-name">{data.meeting_name}</h1>
+        <div className="race-country">
+          <h2 className="race-country-name">{data.country_name}</h2>
+          <h2 className="race-country-code">({data.country_code})</h2>
+        </div>
+        <p1 className="race-location">{data.location}</p1>
+        <p2 className="race-date">
+          {new Date(data.date_start).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+          })}
+        </p2>
+      </div>
     </div>
   );
 }
