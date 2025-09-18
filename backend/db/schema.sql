@@ -53,7 +53,8 @@ CREATE TABLE calendar(
   meeting_official_name text NOT NULL,
   gmt_offset interval NOT NULL,
   date_start timestamp with time zone NOT NULL,
-  year integer NOT NULL
+  year integer NOT NULL,
+  image text NOT NULL
 );
 
 -- Set starting value for meeting_key serial to 1254

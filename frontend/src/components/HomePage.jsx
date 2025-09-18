@@ -16,6 +16,7 @@ export default function HomePage() {
   // Countdown state
   const [countdown, setCountdown] = useState("");
 
+  // useEffect to update the countdown every second
   useEffect(() => {
     if (!closestRace) return;
     const target = new Date(closestRace.date_start).getTime(); // Get next race time in milliseconds
@@ -43,25 +44,36 @@ export default function HomePage() {
   if (errorCalendar)
     return <p>Error loading calendar: {errorCalendar.message}</p>;
   if (!calendar) return <p>No calendar data found.</p>;
+  if (!closestRace) return <p>No upcoming race found.</p>;
 
   return (
     <>
-      <h1>Welcome to the F1 Dashboard</h1>
-      <p>Here you can find information about drivers, teams, and races.</p>
-      <p>
-        Register to add your favorite teams or drivers to get personalized
-        updates.
-      </p>
-      <p>Next Race:</p>
-      {closestRace && (
+      <div className="welcome-section">
+        <h1>Welcome to the F1 Dashboard</h1>
         <p>
-          {closestRace.meeting_official_name}
-          <br />
-          {new Date(closestRace.date_start).toLocaleDateString()}
-          <br />
-          Till lights out and away we go: {countdown}
+          Here you can find information about drivers, teams, and races.
+          Register to add your favorite teams or drivers to get personalized
+          updates.
         </p>
-      )}
+      </div>
+
+      <div>
+        <h2>Next Race</h2>
+        {closestRace && (
+          <div className="next-race-container">
+            <img
+              src={closestRace.image}
+              alt="race link"
+              className="next-race-image"
+            />
+            <div className="next-race-details">
+              <h3>{closestRace.meeting_official_name}</h3>
+              <p>{new Date(closestRace.date_start).toLocaleDateString()}</p>
+              <p>Till lights out and away we go: {countdown}</p>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 }
