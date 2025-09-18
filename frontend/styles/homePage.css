@@ -2,6 +2,13 @@
   text-align: center;
   margin-bottom: 2rem;
 }
+
+.next-race-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .next-race-container {
   position: relative;
   display: inline-block;
@@ -22,5 +29,5 @@
   width: 100%;
   height: auto;
   display: block;
-  max-height: 700px; /* Set your desired max height */
+  max-height: 700px;
 }

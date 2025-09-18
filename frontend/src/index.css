@@ -2,7 +2,11 @@
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));/
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));
+}
+
+.navbar-logo {
+  width: 40%;
 }
 
 .navigation {

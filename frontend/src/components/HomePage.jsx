@@ -52,13 +52,14 @@ export default function HomePage() {
         <h1>Welcome to the F1 Dashboard</h1>
         <p>
           Here you can find information about drivers, teams, and races.
+          <br />
           Register to add your favorite teams or drivers to get personalized
           updates.
         </p>
       </div>
 
-      <div>
-        <h2>Next Race</h2>
+      <div className="next-race-section">
+        <h2>🏁 Next Race 🏁</h2>
         {closestRace && (
           <div className="next-race-container">
             <img
