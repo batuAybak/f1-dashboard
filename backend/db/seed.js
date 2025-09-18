@@ -63,8 +63,8 @@ async function seed() {
   // Insert calendar data into the database
   for (const meeting of raceCalendar) {
     await db.query(
-      `INSERT INTO calendar (circuit_short_name, meeting_code, location, country_code, country_name, meeting_name, meeting_official_name, gmt_offset, date_start, year)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+      `INSERT INTO calendar (circuit_short_name, meeting_code, location, country_code, country_name, meeting_name, meeting_official_name, gmt_offset, date_start, year, image)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
        `,
       [
         meeting.circuit_short_name,
@@ -76,7 +76,8 @@ async function seed() {
         meeting.meeting_official_name,
         meeting.gmt_offset,
         meeting.date_start,
-        meeting.year
+        meeting.year,
+        meeting.image
       ]
     );
   }

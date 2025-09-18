@@ -9,7 +9,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 LOUIS VUITTON AUSTRALIAN GRAND PRIX 2025",
         "gmt_offset": "11:00:00",
         "date_start": "2025-03-16T01:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Australia.webp"
     },
     {
         "circuit_short_name": "Shanghai",
@@ -21,7 +22,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 HEINEKEN CHINESE GRAND PRIX 2025",
         "gmt_offset": "08:00:00",
         "date_start": "2025-03-23T03:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/China.webp"
     },
     {
         "circuit_short_name": "Suzuka",
@@ -33,7 +35,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 LENOVO JAPANESE GRAND PRIX 2025",
         "gmt_offset": "09:00:00",
         "date_start": "2025-04-06T02:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Japan.webp"
     },
     {
         "circuit_short_name": "Sakhir",
@@ -45,7 +48,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2025",
         "gmt_offset": "03:00:00",
         "date_start": "2025-04-11T13:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Bahrain.webp"
     },
     {
         "circuit_short_name": "Jeddah",
@@ -57,7 +61,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2025",
         "gmt_offset": "03:00:00",
         "date_start": "2025-04-20T13:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Saudi_Arabia.webp"
     },
     {
         "circuit_short_name": "Miami",
@@ -69,7 +74,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 CRYPTO.COM MIAMI GRAND PRIX 2025",
         "gmt_offset": "-04:00:00",
         "date_start": "2025-05-04T16:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Miami.webp"
     },
     {
         "circuit_short_name": "Imola",
@@ -81,7 +87,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 AWS GRAN PREMIO DEL MADE IN ITALY E DELL'EMILIA-ROMAGNA 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-05-18T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Emilia%20Romagna.webp"
     },
     {
         "circuit_short_name": "Monte Carlo",
@@ -93,7 +100,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 TAG HEUER GRAND PRIX DE MONACO 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-05-25T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Monaco.webp"
     },
     {
         "circuit_short_name": "Catalunya",
@@ -105,7 +113,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 ARAMCO GRAN PREMIO DE ESPAÑA 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-05-01T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Spain.webp"
     },
     {
         "circuit_short_name": "Montreal",
@@ -117,7 +126,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 PIRELLI GRAND PRIX DU CANADA 2025",
         "gmt_offset": "-04:00:00",
         "date_start": "2025-06-15T17:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Canada.webp"
     },
     {
         "circuit_short_name": "Spielberg",
@@ -129,7 +139,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 MSC CRUISES AUSTRIAN GRAND PRIX 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-06-29T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Austria.webp"
     },
     {
         "circuit_short_name": "Spa-Francorchamps",
@@ -141,7 +152,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 MOËT & CHANDON BELGIAN GRAND PRIX 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-07-27T10:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Belgium.webp"
     },
     {
         "circuit_short_name": "Hungaroring",
@@ -153,7 +165,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 LENOVO HUNGARIAN GRAND PRIX 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-08-03T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Hungary.webp"
     },
     {
         "circuit_short_name": "Zandvoort",
@@ -165,7 +178,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 HEINEKEN DUTCH GRAND PRIX 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-08-31T10:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Netherlands.webp"
     },
     {
         "circuit_short_name": "Monza",
@@ -177,7 +191,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 PIRELLI GRAN PREMIO D’ITALIA 2025",
         "gmt_offset": "02:00:00",
         "date_start": "2025-09-07T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Italy.webp"
     },
     {
         "circuit_short_name": "Baku",
@@ -189,7 +204,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 AZERBAIJAN GRAND PRIX 2025",
         "gmt_offset": "+04:00:00",
         "date_start": "2025-09-21T09:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Azerbaijan.webp"
     },
     {
         "circuit_short_name": "Marina Bay",
@@ -201,7 +217,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2025",
         "gmt_offset": "+08:00:00",
         "date_start": "2025-10-05T10:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Singapore.webp"
     },
     {
         "circuit_short_name": "COTA",
@@ -213,7 +230,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 PIRELLI UNITED STATES GRAND PRIX 2025",
         "gmt_offset": "-05:00:00",
         "date_start": "2025-10-19T15:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/USA.webp"
     },
     {
         "circuit_short_name": "Hermanos Rodríguez",
@@ -225,7 +243,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 GRAN PREMIO DE LA CIUDAD DE MÉXICO 2025",
         "gmt_offset": "-06:00:00",
         "date_start": "2025-10-26T15:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Mexico.webp"
     },
     {
         "circuit_short_name": "Interlagos",
@@ -237,7 +256,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 LENOVO GRANDE PRÊMIO DE SÃO PAULO 2025",
         "gmt_offset": "-03:00:00",
         "date_start": "2025-11-09T14:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Brazil.webp"
     },
     {
         "circuit_short_name": "Las Vegas",
@@ -249,7 +269,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 HEINEKEN SILVER LAS VEGAS GRAND PRIX 2025",
         "gmt_offset": "-08:00:00",
         "date_start": "2025-11-22T05:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Las%20Vegas.webp"
     },
     {
         "circuit_short_name": "Lusail",
@@ -261,7 +282,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 QATAR AIRWAYS QATAR GRAND PRIX 2025",
         "gmt_offset": "+03:00:00",
         "date_start": "2025-11-30T11:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Qatar.webp"
     },
     {
         "circuit_short_name": "Yas Marina",
@@ -273,7 +295,8 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 ETIHAD AIRWAYS ABU DHABI GRAND PRIX 2025",
         "gmt_offset": "+04:00:00",
         "date_start": "2025-12-07T10:00:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Abu%20Dhabi.webp"
     },
     {
         "circuit_short_name": "Silverstone",
@@ -285,6 +308,7 @@ export const raceCalendar = [
         "meeting_official_name": "FORMULA 1 QATAR AIRWAYS BRITISH GRAND PRIX 2025",
         "gmt_offset": "01:00:00",
         "date_start": "2025-07-06T11:30:00+00:00",
-        "year": 2025
+        "year": 2025,
+        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Great%20Britain.webp"
     }
 ];
