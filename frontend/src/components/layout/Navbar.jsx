@@ -6,9 +6,10 @@ export default function Navbar() {
   const { token, logout } = useAuth();
   return (
     <header id="navbar">
-      <section className="logo">
+      <section>
         <img
-          src="https://thumbnail.imgbin.com/25/24/5/f1-logo-rsrQT67e_t.jpg"
+          className="navbar-logo"
+          src="https://logos-world.net/wp-content/uploads/2023/12/F1-Logo.png"
           alt="Formula 1 Logo"
         />
       </section>
