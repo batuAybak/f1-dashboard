@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 
-//TODO hardcode images for each grand prix background
 export default function CalendarList({ circuit }) {
   const navigate = useNavigate();
 
