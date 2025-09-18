@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { AuthProvider } from "./auth/AuthContext.jsx";
 import "./index.css";
 import "../styles/teamsPage.css";
+import "../styles/homePage.css";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
