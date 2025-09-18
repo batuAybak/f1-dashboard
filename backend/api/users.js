@@ -6,7 +6,10 @@ import { createUser, getUserByUsernameAndPassword } from "#db/queries/users";
 import requireBody from "#middleware/requireBody";
 import { createToken } from "#utils/jwt";
 import requireUser from "#middleware/requireUser";
-import { getUserFavoriteDriver } from "#db/queries/userFavorites";
+import {
+  getUserFavoriteDriver,
+  deleteUserFavoriteDriver,
+} from "#db/queries/userFavorites";
 
 router
   .route("/register")
@@ -32,8 +35,16 @@ router
     res.send(token);
   });
 
-router.route("/profile").get(requireUser, async (req, res) => {
-  const user = req.user;
-  const userFavorites = await getUserFavoriteDriver(user.id);
-  res.send({ user, userFavorites });
-});
+router
+  .route("/profile")
+  .get(requireUser, async (req, res) => {
+    const user = req.user;
+    const userFavorites = await getUserFavoriteDriver(user.id);
+    res.send({ user, userFavorites });
+  })
+  .delete(requireUser, async (req, res) => {
+    const user = req.user;
+    const { driverId } = req.body;
+    const removed = await deleteUserFavoriteDriver(user.id, driverId);
+    res.send({ removed });
+  });

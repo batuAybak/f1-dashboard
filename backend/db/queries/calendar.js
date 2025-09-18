@@ -15,6 +15,8 @@ export async function getRaceByCircuit(circuit) {
     FROM calendar
     WHERE circuit_short_name = $1
     `;
-  const { rows: races } = await db.query(SQL, [circuit]);
-  return races;
+  const {
+    rows: [race],
+  } = await db.query(SQL, [circuit]);
+  return race;
 }

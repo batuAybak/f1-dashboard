@@ -6,6 +6,8 @@ import DriversPage from "./components/drivers/DriversPage";
 import TeamsPage from "./components/teams/TeamsPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import HomePage from "./components/HomePage";
+import CalendarPage from "./components/calendar/CalendarPage";
+import CalendarDetails from "./components/calendar/CalendarDetails";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/drivers" element={<DriversPage />} />
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/calendar/:circuit" element={<CalendarDetails />} />
       </Route>
     </Routes>
   );

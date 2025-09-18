@@ -18,6 +18,7 @@ export default function Navbar() {
         </NavLink>
         <NavLink to="/drivers">Drivers Page</NavLink>
         <NavLink to="/teams">Teams Page</NavLink>
+        <NavLink to="/calendar">Calendar Page</NavLink>
         <nav className="profile-nav">
           {token ? (
             <>

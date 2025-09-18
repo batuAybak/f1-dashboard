@@ -13,7 +13,6 @@ import db from "#db/client";
 //   return favorites;
 // }
 
-// TODO: Fix table so it returns driver details instead of driver id
 export async function getUserFavoriteDriver(userId) {
   const SQL = `
   SELECT d.first_name, d.last_name, d.team_name, d.driver_number
@@ -27,12 +26,12 @@ WHERE f.user_id = $1
   return driver;
 }
 
-// TODO: Fix table so it return team details instead of team id
 export async function getUserFavoriteTeam(userId) {
   const SQL = `
-  SELECT user_id, team_id
-  FROM favorite_teams
-  WHERE user_id = $1
+  SELECT t.team_name, t.team_color, t.team_logo
+FROM favorite_teams f
+JOIN teams t ON f.team_id = t.team_name
+WHERE f.user_id = $1
   `;
   const {
     rows: [team],
