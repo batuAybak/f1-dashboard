@@ -1,20 +1,22 @@
 import { getAllTeams, getTeamById, getTeamDrivers } from "#db/queries/teams";
-import { addUserFavoriteTeam } from "#db/queries/userFavorites";
+import { addUserFavoriteTeam, deleteUserFavoriteTeam } from "#db/queries/userFavorites";
 import express from "express";
 const teamsRouter = express.Router();
 export default teamsRouter;
 import requireUser from "#middleware/requireUser";
+import requireBody from "#middleware/requireBody";
 
 teamsRouter
-  .route("/") // Display all teams
-  .get(async (req, res) => {
+  .route("/")
+  .get(async (req, res) => { // Display all teams
     const allTeams = await getAllTeams();
     res.send(allTeams);
-  }) // TODO: Fix favorite team functionality
-  .post(requireUser, async (req, res) => {
-    const team = await getTeamById(req.body.team_id);
-    const favoriteTeam = await addUserFavoriteTeam(req.user.id, req.team.id);
-    res.send(favoriteTeam);
+  })
+  .delete(requireUser, requireBody(["team_id"]), async (req, res) => {
+    const user = req.user;
+    const { team_id } = req.body;
+    const removed = await deleteUserFavoriteTeam(user.id, team_id);
+    res.send({ removed });
   });
 
 teamsRouter.param("id", async (req, res, next, id) => {
@@ -26,10 +28,15 @@ teamsRouter.param("id", async (req, res, next, id) => {
 });
 
 teamsRouter
-  .route("/:id") // Display team by id
-  .get(async (req, res) => {
+  .route("/:id")
+  .get(async (req, res) => { // Display team by id
     res.send(req.team);
-  });
+  })
+  .post(requireUser, async (req, res) => { // Add team to user's favorite teams
+    const favoriteTeam = await addUserFavoriteTeam(req.user.id, req.team.id);
+    res.send(favoriteTeam);
+  })
+
 
 teamsRouter
   .route("/:id/drivers") // Display drivers by team id

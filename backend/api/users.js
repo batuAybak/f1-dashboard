@@ -8,7 +8,7 @@ import { createToken } from "#utils/jwt";
 import requireUser from "#middleware/requireUser";
 import {
   getUserFavoriteDriver,
-  deleteUserFavoriteDriver,
+  getUserFavoriteTeam
 } from "#db/queries/userFavorites";
 
 router
@@ -37,14 +37,10 @@ router
 
 router
   .route("/profile")
-  .get(requireUser, async (req, res) => {
+  .get(requireUser, async (req, res) => { // Get user profile with favorite driver and team
     const user = req.user;
-    const userFavorites = await getUserFavoriteDriver(user.id);
-    res.send({ user, userFavorites });
+    const userFavoriteDriver = await getUserFavoriteDriver(user.id);
+    const userFavoriteTeam = await getUserFavoriteTeam(user.id);
+    res.send({ user, userFavoriteDriver, userFavoriteTeam });
   })
-  .delete(requireUser, async (req, res) => {
-    const user = req.user;
-    const { driverId } = req.body;
-    const removed = await deleteUserFavoriteDriver(user.id, driverId);
-    res.send({ removed });
-  });
+
