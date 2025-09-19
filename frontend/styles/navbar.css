@@ -33,6 +33,11 @@ a {
     font-size: 1.25rem;
 }
 
+a:hover,
+a.active {
+    color:rgba(255, 140, 0, 0.916);
+}
+
 .hamburger {
     display: none;
     flex-direction: column;

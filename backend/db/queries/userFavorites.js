@@ -28,10 +28,10 @@ WHERE f.user_id = $1
 
 export async function getUserFavoriteTeam(userId) {
   const SQL = `
-  SELECT t.team_name, t.team_color, t.team_logo
-FROM favorite_teams f
-JOIN teams t ON f.team_id = t.team_name
-WHERE f.user_id = $1
+  SELECT t.id, t.team_name, t.team_color, t.team_logos
+  FROM favorite_teams f
+  JOIN teams t ON f.team_id = t.id
+  WHERE f.user_id = $1
   `;
   const {
     rows: [team],

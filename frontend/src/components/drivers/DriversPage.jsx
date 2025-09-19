@@ -8,14 +8,17 @@ export default function DriversPage() {
   if (error) return <p>Error! {error}</p>;
 
   return (
-    <ul className="driver-list">
-      {data.map((driver) => (
-        <DriverList
-          key={driver.driver_number}
-          driver={driver}
-          teamName={driver.team_name}
-        />
-      ))}
-    </ul>
+    <>
+      <h1 className="drivers-header">Drivers</h1>
+      <ul className="driver-list">
+        {data.map((driver) => (
+          <DriverList
+            key={driver.driver_number}
+            driver={driver}
+            teamName={driver.team_name}
+          />
+        ))}
+      </ul>
+    </>
   );
 }
