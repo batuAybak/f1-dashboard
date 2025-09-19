@@ -15,7 +15,7 @@ export default function TeamsPage() {
 
   return (
     <>
-      <h1>Teams</h1>
+      <h1 className="teams-header">Teams</h1>
       <ul className="teams-list">
         {teams.map((team) => (
           <>

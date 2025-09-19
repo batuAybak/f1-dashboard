@@ -1,3 +1,7 @@
+.drivers-header {
+  text-align: center;
+}
+
 .driver-list {
   display: flex;
   flex-wrap: wrap;
