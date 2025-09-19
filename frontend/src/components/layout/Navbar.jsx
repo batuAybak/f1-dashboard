@@ -1,9 +1,11 @@
 import { NavLink } from "react-router";
 
 import { useAuth } from "../../auth/AuthContext";
+import { useState } from "react";
 
 export default function Navbar() {
   const { token, logout } = useAuth();
+  const [open, setOpen] = useState(false);
   return (
     <header id="navbar">
       <section>
@@ -13,9 +15,9 @@ export default function Navbar() {
           alt="Formula 1 Logo"
         />
       </section>
-      <section className="navigation">
+      <section className={`navigation ${open ? "open" : ""}`}>
         <NavLink id="brand" to="/">
-          <p>Home</p>
+          Home
         </NavLink>
         <NavLink to="/drivers">Drivers</NavLink>
         <NavLink to="/teams">Teams</NavLink>
@@ -24,13 +26,20 @@ export default function Navbar() {
           {token ? (
             <>
               <NavLink to="/profile">Profile</NavLink>
-              <button onClick={logout}>Log out</button>
+              <button className="logout" onClick={logout}>
+                Log out
+              </button>
             </>
           ) : (
             <NavLink to="/login">Log in</NavLink>
           )}
         </nav>
       </section>
+      <div className="hamburger" onClick={() => setOpen(!open)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </header>
   );
 }
