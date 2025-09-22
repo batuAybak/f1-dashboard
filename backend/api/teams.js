@@ -12,12 +12,6 @@ teamsRouter
     const allTeams = await getAllTeams();
     res.send(allTeams);
   })
-  .delete(requireUser, requireBody(["team_id"]), async (req, res) => {
-    const user = req.user;
-    const { team_id } = req.body;
-    const removed = await deleteUserFavoriteTeam(user.id, team_id);
-    res.send({ removed });
-  });
 
 teamsRouter.param("id", async (req, res, next, id) => {
   //Parameter validation
@@ -36,6 +30,14 @@ teamsRouter
     const favoriteTeam = await addUserFavoriteTeam(req.user.id, req.team.id);
     res.send(favoriteTeam);
   })
+  .delete(requireUser, async (req, res) => {
+    // req.user.id comes from requireUser middleware
+    // req.team.id comes from param middleware above
+    // No need to pass anything in the body of the request here 
+    // since we have both values we need from the middlewares
+    const removed = await deleteUserFavoriteTeam(req.user.id, req.team.id);
+    res.send({ removed });
+  });
 
 
 teamsRouter

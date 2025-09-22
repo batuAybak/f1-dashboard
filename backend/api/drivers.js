@@ -12,12 +12,6 @@ driversRouter
     const allDrivers = await getAllDrivers();
     res.send(allDrivers);
   })
-  .delete(requireUser, requireBody(["driver_id"]), async (req, res) => { // Delete driver from user's favorite drivers
-    const user = req.user;
-    const { driver_id } = req.body;
-    const removed = await deleteUserFavoriteDriver(user.id, driver_id);
-    res.send({ removed });
-  })
 
 driversRouter.param("id", async (req, res, next, id) => {
   //Parameter validation
@@ -38,6 +32,14 @@ driversRouter
       req.driver.driver_number
     );
     res.send(favoriteDriver);
+  })
+  .delete(requireUser, async (req, res) => { // Delete driver from user's favorite drivers
+    // req.user.id comes from requireUser middleware
+    // req.driver.driver_number comes from param middleware above
+    // No need to pass anything in the body of the request here 
+    // since we have both values we need from the middlewares
+    const removed = await deleteUserFavoriteDriver(req.user.id, req.driver.driver_number);
+    res.send({ removed });
   })
 
 driversRouter.use(async (err, req, res, next) => {
