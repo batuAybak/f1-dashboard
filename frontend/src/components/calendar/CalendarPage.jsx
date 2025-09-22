@@ -8,10 +8,13 @@ export default function DriversPage() {
   if (error) return <p>Error! {error}</p>;
 
   return (
-    <ul className="calendar-list">
-      {calendar.map((circuit) => (
-        <CalendarList key={calendar.meeting_key} circuit={circuit} />
-      ))}
-    </ul>
+    <>
+      <h1 className="calendar-header">Calendar</h1>
+      <ul className="calendar-list">
+        {calendar.map((circuit) => (
+          <CalendarList key={calendar.meeting_key} circuit={circuit} />
+        ))}
+      </ul>
+    </>
   );
 }

@@ -9,14 +9,14 @@ export async function getAllRaces() {
   return races;
 }
 
-export async function getRaceByCircuit(circuit) {
+export async function getRaceByCircuit(meetingKey) {
   const SQL = `
     SELECT * 
     FROM calendar
-    WHERE circuit_short_name = $1
+    WHERE meeting_key = $1
     `;
   const {
     rows: [race],
-  } = await db.query(SQL, [circuit]);
+  } = await db.query(SQL, [meetingKey]);
   return race;
 }

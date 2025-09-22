@@ -20,7 +20,7 @@ export default function App() {
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/calendar" element={<CalendarPage />} />
-        <Route path="/calendar/:circuit" element={<CalendarDetails />} />
+        <Route path="/calendar/:meetingKey" element={<CalendarDetails />} />
       </Route>
     </Routes>
   );

@@ -5,10 +5,12 @@ export default function CalendarList({ circuit }) {
 
   console.log(circuit.image);
 
+  // TODO organize by date
+
   return (
     <li
       className="calendar-card"
-      onClick={() => navigate(`/calendar/${circuit.circuit_short_name}`)}
+      onClick={() => navigate(`/calendar/${circuit.meeting_key}`)}
       style={{
         backgroundImage: `url(${circuit.image})`,
         backgroundSize: "cover",

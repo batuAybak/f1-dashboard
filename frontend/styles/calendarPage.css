@@ -1,8 +1,13 @@
+.calendar-header {
+  text-align: center;
+}
+
 .calendar-list {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   list-style-type: none;
+  justify-content: center;
 }
 
 .calendar.card {
