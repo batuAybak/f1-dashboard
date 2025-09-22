@@ -15,10 +15,10 @@ import db from "#db/client";
 
 export async function getUserFavoriteDriver(userId) {
   const SQL = `
-  SELECT d.first_name, d.last_name, d.team_name, d.driver_number
-FROM favorite_drivers f
-JOIN drivers d ON f.driver_id = d.driver_number
-WHERE f.user_id = $1
+  SELECT d.*
+  FROM favorite_drivers f
+  JOIN drivers d ON f.driver_id = d.driver_number
+  WHERE f.user_id = $1
   `;
   const {
     rows: [driver],
@@ -28,7 +28,7 @@ WHERE f.user_id = $1
 
 export async function getUserFavoriteTeam(userId) {
   const SQL = `
-  SELECT t.id, t.team_name, t.team_color, t.team_logos
+  SELECT t.*
   FROM favorite_teams f
   JOIN teams t ON f.team_id = t.id
   WHERE f.user_id = $1
