@@ -1,6 +1,8 @@
 import useQuery from "../../api/useQuery.js";
 import useMutation from "../../api/useMutation.js";
 import { useNavigate } from "react-router";
+import DriverList from "../drivers/DriverList.jsx";
+import TeamList from "../teams/TeamList.jsx";
 
 export default function ProfilePage() {
   const { data: user, loading, error } = useQuery("/users/profile", "profile"); // Fetch user profile with favorite driver and team
@@ -37,28 +39,31 @@ export default function ProfilePage() {
           Welcome, {user?.user.first_name} {user?.user.last_name}!
         </h1>
       </div>
-      {/* Favorite Driver */}
+      {/* ----- Favorite Driver ----- */}
       <div className="favorite-driver">
-        <h2>Favorite Drivers</h2>
+        <h2>Favorite Driver</h2>
         {userFavoriteDriver === undefined ? (
           <>
             <p>No favorite drivers added.</p>
+            {/* TODO ADD A DROP DOWN FOR DRIVER SELECTION */}
             <button onClick={() => navigate("/drivers")}>
               Add a Favorite Driver
             </button>
           </>
         ) : (
           <>
-            <p>
-              {userFavoriteDriver.first_name} {userFavoriteDriver.last_name}
-            </p>
+            <DriverList
+              driver={userFavoriteDriver}
+              teamName={userFavoriteDriver.team_name}
+            />
+            <br />
             <button onClick={() => removeDriver()}>
               Remove Favorite Driver
             </button>
           </>
         )}
       </div>
-      {/* Favorite Team */}
+      {/* ----- Favorite Team ----- */}
       <div className="favorite-team">
         <h2>Favorite Team</h2>
         {userFavoriteTeam === undefined ? (
@@ -70,7 +75,8 @@ export default function ProfilePage() {
           </>
         ) : (
           <>
-            <p>{userFavoriteTeam.team_name}</p>
+            <TeamList team={userFavoriteTeam} />
+            <br />
             <button onClick={() => removeTeam()}>Remove Favorite Team</button>
           </>
         )}
