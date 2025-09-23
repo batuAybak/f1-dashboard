@@ -12,6 +12,13 @@ driversRouter
     const allDrivers = await getAllDrivers();
     res.send(allDrivers);
   })
+  .post(requireUser, requireBody(["driver_number"]), async (req, res) => { // Add driver to user's favorite drivers
+    const favoriteDriver = await addUserFavoriteDriver(
+      req.user.id,
+      req.body.driver_number //Get driver number from the request body
+    );
+    res.send(favoriteDriver);
+  })
 
 driversRouter.param("id", async (req, res, next, id) => {
   //Parameter validation
@@ -25,13 +32,6 @@ driversRouter
   .route("/:id")
   .get(async (req, res) => { // Display driver by id
     res.send(req.driver);
-  })
-  .post(requireUser, async (req, res) => { // Add driver to user's favorite drivers
-    const favoriteDriver = await addUserFavoriteDriver(
-      req.user.id,
-      req.driver.driver_number
-    );
-    res.send(favoriteDriver);
   })
   .delete(requireUser, async (req, res) => { // Delete driver from user's favorite drivers
     // req.user.id comes from requireUser middleware
