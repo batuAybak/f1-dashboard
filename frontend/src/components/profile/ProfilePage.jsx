@@ -3,6 +3,8 @@ import useMutation from "../../api/useMutation.js";
 import { useNavigate } from "react-router";
 import DriverList from "../drivers/DriverList.jsx";
 import TeamList from "../teams/TeamList.jsx";
+import AddFavoriteDriverSection from "./AddFavoriteDriverSection.jsx";
+import AddFavoriteTeamSection from "./AddFavoriteTeamSection.jsx";
 
 export default function ProfilePage() {
   const { data: user, loading, error } = useQuery("/users/profile", "profile"); // Fetch user profile with favorite driver and team
@@ -39,17 +41,12 @@ export default function ProfilePage() {
           Welcome, {user?.user.first_name} {user?.user.last_name}!
         </h1>
       </div>
+
       {/* ----- Favorite Driver ----- */}
       <div className="favorite-driver">
         <h2>Favorite Driver</h2>
         {userFavoriteDriver === undefined ? (
-          <>
-            <p>No favorite drivers added.</p>
-            {/* TODO ADD A DROP DOWN FOR DRIVER SELECTION */}
-            <button onClick={() => navigate("/drivers")}>
-              Add a Favorite Driver
-            </button>
-          </>
+          <AddFavoriteDriverSection />
         ) : (
           <>
             <DriverList
@@ -63,6 +60,7 @@ export default function ProfilePage() {
           </>
         )}
       </div>
+
       {/* ----- Favorite Team ----- */}
       <div className="favorite-team">
         <h2>Favorite Team</h2>
