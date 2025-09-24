@@ -33,7 +33,7 @@ export default function AddFavoriteTeamSection() {
         </select>
         <br />
         <br />
-        <button type="submit">Add Favorite Driver</button>
+        <button type="submit">Add Favorite Team</button>
       </form>
     </>
   );
