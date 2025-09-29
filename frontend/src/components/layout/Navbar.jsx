@@ -26,6 +26,7 @@ export default function Navbar() {
           {token ? (
             <>
               <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="/forum">Forum</NavLink>
               <button className="logout" onClick={logout}>
                 Log out
               </button>
