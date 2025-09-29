@@ -27,14 +27,14 @@
     margin-inline: 1rem;
 }
 
-a {
+#navbar a {
     color: white;
     text-decoration: none;
     font-size: 1.25rem;
 }
 
-a:hover,
-a.active {
+#navbar a:hover,
+#navbar a.active {
     color:rgba(255, 140, 0, 0.916);
 }
 
@@ -85,9 +85,9 @@ a.active {
     width: 20%;
   }
 
-a {
+  #navbar a {
     color: white;
     text-decoration: none;
     font-size: 1.25rem;
-}
+  }
 }
