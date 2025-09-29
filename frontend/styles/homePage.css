@@ -31,3 +31,9 @@
   display: block;
   max-height: 700px;
 }
+
+@media (max-width: 500px) {
+  .next-race-details {
+    font-size: smaller;
+  }
+}

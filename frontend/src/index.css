@@ -5,3 +5,13 @@
     rgba(185, 42, 7, 0.8)
   );
 } */
+
+html {
+  padding: 1rem;
+}
+
+@media (max-width: 374px) {
+  html {
+    display: none;
+  }
+}

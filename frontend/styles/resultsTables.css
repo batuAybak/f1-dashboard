@@ -1,0 +1,31 @@
+table {
+  width: 95%;
+  border-collapse: collapse;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+thead {
+  background-color: rgba(112, 112, 112);
+  color: white;
+}
+
+th,
+td {
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  border: 1px solid #000000;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #acacacb7;
+}
+
+tbody tr:hover {
+  background-color: #a0a0a0;
+}
+
+.results-header {
+  text-align: center;
+  font-size: 2rem;
+}

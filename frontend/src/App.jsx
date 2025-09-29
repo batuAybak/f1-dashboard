@@ -10,6 +10,8 @@ import CalendarPage from "./components/calendar/CalendarPage";
 import CalendarDetails from "./components/calendar/CalendarDetails";
 import ForumPage from "./components/forum/ForumPage";
 import ForumTopicDetails from "./components/forum/ForumTopicDetails";
+import StandingsPage from "./components/standings/StandingsPage";
+import DriverResults from "./components/drivers/DriverResults";
 
 export default function App() {
   return (
@@ -21,10 +23,12 @@ export default function App() {
         <Route path="/drivers" element={<DriversPage />} />
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/standings" element={<StandingsPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/calendar/:meetingKey" element={<CalendarDetails />} />
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/forum/:id" element={<ForumTopicDetails />} />
+        <Route path="/standings/:driverNumber" element={<DriverResults />} />
       </Route>
     </Routes>
   );

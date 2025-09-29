@@ -5,8 +5,6 @@ export default function CalendarList({ circuit }) {
 
   console.log(circuit.image);
 
-  // TODO organize by date
-
   return (
     <li
       className="calendar-card"
