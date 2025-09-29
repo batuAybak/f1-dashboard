@@ -4,6 +4,7 @@ import { country_codes } from "./data/countryCodes.js";
 import { vehicleImages } from "./data/vehicleImages.js";
 import { raceCalendar } from "./data/raceCalendar.js";
 import { teamLogos } from "./data/teamLogos.js";
+import { addForumTopic, addPostToTopic } from "./queries/forum.js";
 
 await db.connect();
 await seed();
@@ -11,7 +12,9 @@ await db.end();
 console.log("🌱 Database seeded.");
 
 async function seed() {
-  const demoUser = await createUser("demo_user", "demo_password", "Demo", "User");
+  // TODO DELETE these post development
+  const demoUser1 = await createUser("demo_user", "demo_password", "Demo", "User");
+  const demoUser2 = await createUser("demo_user2", "demo_password", "Demo 2", "User");
 
   // Fetch the drivers from the API
   const drivers = await fetch(
@@ -81,4 +84,15 @@ async function seed() {
       ]
     );
   }
+
+  // Dummy forum data
+  const forumTopic1 = await addForumTopic('Lando or Oscar?', 'Who do you think will perform better this season?', demoUser1.id);
+  const forumPost1 = await addPostToTopic(forumTopic1.id, 'I think Lando will outperform Oscar this season.', demoUser2.id);
+  const forumPost1_2 = await addPostToTopic(forumTopic1.id, 'I disagree, Oscar has shown great potential.', demoUser1.id);
+  const forumPost1_3 = await addPostToTopic(forumTopic1.id, 'Both are talented, but I\'m leaning towards Lando.', demoUser2.id);
+
+  const forumTopic2 = await addForumTopic('Best F1 Driver on the Grid', 'Who is the best F1 driver currently racing?', demoUser2.id);
+  const forumPost2 = await addPostToTopic(forumTopic2.id, 'In my opinion, Max Verstappen is the best driver on the grid right now.', demoUser1.id);
+  const forumPost2_2 = await addPostToTopic(forumTopic2.id, 'Lewis Hamilton has been consistently performing at a high level.', demoUser2.id);
+  const forumPost2_3 = await addPostToTopic(forumTopic2.id, 'Don\'t forget about Charles Leclerc, he\'s been impressive too.', demoUser1.id);
 }

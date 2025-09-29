@@ -4,6 +4,8 @@ DROP TABLE IF EXISTS teams CASCADE;
 DROP TABLE IF EXISTS favorite_drivers;
 DROP TABLE IF EXISTS favorite_teams;
 DROP TABLE IF EXISTS calendar;
+DROP TABLE IF EXISTS forum_topics CASCADE;
+DROP TABLE IF EXISTS forum_posts;
 
 CREATE TABLE users (
   id serial PRIMARY KEY,
@@ -59,3 +61,20 @@ CREATE TABLE calendar(
 
 -- Set starting value for meeting_key serial to 1254
 ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1254;
+
+
+CREATE TABLE forum_topics(
+  id serial PRIMARY KEY,
+  user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  title text NOT NULL,
+  content text NOT NULL,
+  created_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE forum_posts(
+  id serial PRIMARY KEY,
+  topic_id integer NOT NULL REFERENCES forum_topics(id) ON DELETE CASCADE,
+  user_id integer NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  content text NOT NULL,
+  created_at timestamp DEFAULT CURRENT_TIMESTAMP
+);
