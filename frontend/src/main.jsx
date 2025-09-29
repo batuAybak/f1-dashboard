@@ -11,6 +11,7 @@ import "../styles/driversPage.css";
 import "../styles/calendarPage.css";
 import "../styles/calendarDetails.css";
 import "../styles/profilePage.css";
+import "../styles/forumPage.css";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>

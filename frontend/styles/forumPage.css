@@ -1,0 +1,18 @@
+.forum-topics {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.forum-topics a {
+  color: black;
+}
+
+.forum-topics a:hover,
+.forum-topics a.active {
+  color: rgba(255, 140, 0, 0.916);
+}
+
+.posts-list {
+  list-style-type: none;
+}
