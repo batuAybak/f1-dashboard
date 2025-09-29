@@ -8,6 +8,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 import HomePage from "./components/HomePage";
 import CalendarPage from "./components/calendar/CalendarPage";
 import CalendarDetails from "./components/calendar/CalendarDetails";
+import StandingsPage from "./components/standings/StandingsPage";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/drivers" element={<DriversPage />} />
         <Route path="/teams" element={<TeamsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/standings" element={<StandingsPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/calendar/:meetingKey" element={<CalendarDetails />} />
       </Route>
