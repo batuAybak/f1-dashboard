@@ -12,6 +12,10 @@ teamsRouter
     const allTeams = await getAllTeams();
     res.send(allTeams);
   })
+  .post(requireUser, requireBody(["id"]), async (req, res) => { // Add team to user's favorite teams
+    const favoriteTeam = await addUserFavoriteTeam(req.user.id, req.body.id);
+    res.send(favoriteTeam);
+  })
 
 teamsRouter.param("id", async (req, res, next, id) => {
   //Parameter validation
@@ -25,10 +29,6 @@ teamsRouter
   .route("/:id")
   .get(async (req, res) => { // Display team by id
     res.send(req.team);
-  })
-  .post(requireUser, async (req, res) => { // Add team to user's favorite teams
-    const favoriteTeam = await addUserFavoriteTeam(req.user.id, req.team.id);
-    res.send(favoriteTeam);
   })
   .delete(requireUser, async (req, res) => {
     // req.user.id comes from requireUser middleware

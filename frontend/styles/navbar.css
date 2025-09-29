@@ -9,7 +9,7 @@
 .navigation {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   gap: 2rem;
   align-items: center;
   width: 65%;
@@ -18,7 +18,7 @@
 
 .profile-nav {
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
   align-items: center;
 }
 
