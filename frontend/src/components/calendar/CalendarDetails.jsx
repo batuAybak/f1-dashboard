@@ -25,7 +25,6 @@ export default function GrandPrixDetails() {
 
   const driverName = (number) => {
     const name = driver?.find((driver) => driver?.driver_number === number);
-    // console.log(name?.driver_number);
     const fullName = name?.first_name + " " + name?.last_name;
     return fullName;
   };
@@ -53,7 +52,7 @@ export default function GrandPrixDetails() {
         </div>
       </section>
       <section>
-        <h2>Race Results</h2>
+        <h2 className="results-header">Race Results</h2>
         <table>
           <thead>
             <tr>

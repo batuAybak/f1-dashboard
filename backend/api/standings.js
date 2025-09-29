@@ -1,4 +1,5 @@
 import { results } from "#db/data/results";
+import { getDriverById } from "#db/queries/drivers";
 import express from "express";
 const standingsRouter = express.Router();
 export default standingsRouter;
@@ -24,11 +25,17 @@ standingsRouter.route("/").get(async (req, res) => {
   res.send(driverArray);
 });
 
-// standingsRouter.route("/:driverNumber").get(async (req, res) => {
-//   const driverNumber = parseInt(req.params.driverNumber, 10);
-//   const filterDriver = results.filter(
-//     (driver) => driver.driver_number === driverNumber
-//   );
+standingsRouter.param("driverNumber", async (req, res, next, id) => {
+  const driver = await getDriverById(id);
+  if (!driver) res.status(404).send("No driver found");
+  req.driver = driver;
+  next();
+});
 
-//   return res.send(filterDriver);
-// });
+standingsRouter.route("/:driverNumber").get(async (req, res) => {
+  const driverNumber = req.driver.driver_number;
+  const filterDriver = results.filter(
+    (driver) => driver.driver_number === driverNumber
+  );
+  return res.send(filterDriver);
+});

@@ -1,7 +1,9 @@
 import useQuery from "../../api/useQuery.js";
+import { useNavigate } from "react-router";
 
 export default function DriverList({ driver, teamName }) {
   const { data: teams, loading, error } = useQuery("/teams", "teams");
+  const navigate = useNavigate();
 
   if (loading || !teams) return <p>Loading...</p>;
   if (error) return <p>Error! {error}</p>;
@@ -9,7 +11,11 @@ export default function DriverList({ driver, teamName }) {
   const team = teams.find((team) => team.team_name == teamName);
 
   return (
-    <li className="driver-card" style={{ background: `#${team.team_color}` }}>
+    <li
+      className="driver-card"
+      style={{ background: `#${team.team_color}` }}
+      onClick={() => navigate(`/standings/${driver.driver_number}`)}
+    >
       <div className="driver-picture-number">
         <img
           src={driver?.headshot_url}

@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router";
 import useQuery from "../../api/useQuery";
 
 export default function StandingsPage() {
+  const navigate = useNavigate();
   const { data, loading, error } = useQuery("/standings", "standings");
 
   const {
@@ -19,7 +21,7 @@ export default function StandingsPage() {
   console.log(team);
 
   const orderStandings = data.sort((a, b) => b.points - a.points);
-  console.log(orderStandings);
+  // console.log(orderStandings);
 
   const driverName = (number) => {
     const name = driver?.find((driver) => driver?.driver_number === number);
@@ -53,7 +55,7 @@ export default function StandingsPage() {
   return (
     <div className="standings-page">
       <section className="driver-standings-section">
-        <h2 className="driver-standings-header">Driver Standings</h2>
+        <h2 className="results-header">Driver Standings</h2>
         <table>
           <thead>
             <tr>
@@ -65,7 +67,12 @@ export default function StandingsPage() {
           </thead>
           <tbody>
             {orderStandings.map((standings, index) => (
-              <tr key={standings.driver_number}>
+              <tr
+                key={standings.driver_number}
+                onClick={() =>
+                  navigate(`/standings/${standings.driver_number}`)
+                }
+              >
                 <td>{index + 1}</td>
                 <td>{standings.driver_number}</td>
                 <td>{driverName(standings.driver_number)}</td>
@@ -76,7 +83,7 @@ export default function StandingsPage() {
         </table>
       </section>
       <section className="team-standings-section">
-        <h2 className="team-standings-header">Team Standings</h2>
+        <h2 className="results-header">Team Standings</h2>
         <table>
           <thead>
             <tr>

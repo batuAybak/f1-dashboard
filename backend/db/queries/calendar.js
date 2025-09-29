@@ -4,6 +4,7 @@ export async function getAllRaces() {
   const SQL = `
     SELECT * 
     FROM calendar
+    ORDER BY date_start
     `;
   const { rows: races } = await db.query(SQL);
   return races;

@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import CalendarPage from "./components/calendar/CalendarPage";
 import CalendarDetails from "./components/calendar/CalendarDetails";
 import StandingsPage from "./components/standings/StandingsPage";
+import DriverResults from "./components/drivers/DriverResults";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/standings" element={<StandingsPage />} />
         <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/calendar/:meetingKey" element={<CalendarDetails />} />
+        <Route path="/standings/:driverNumber" element={<DriverResults />} />
       </Route>
     </Routes>
   );

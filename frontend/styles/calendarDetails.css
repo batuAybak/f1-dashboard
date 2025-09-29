@@ -72,3 +72,19 @@
     top: 1rem;
   }
 }
+
+@media (max-width: 500px) {
+  .race-details {
+    max-width: 80%;
+    left: 0;
+    top: 1rem;
+  }
+
+  .race-location,
+  .race-country-code,
+  .race-country-name,
+  .race-name,
+  .race-date {
+    font-size: smaller;
+  }
+}
