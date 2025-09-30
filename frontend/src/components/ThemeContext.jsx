@@ -16,6 +16,7 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     document.body.className = theme;
+    document.body.classList = theme;
   }, [theme]);
 
   return (

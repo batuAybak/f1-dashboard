@@ -30,3 +30,8 @@ tbody tr:hover {
   font-size: 2rem;
   margin: 1rem 0;
 }
+
+body.dark th,
+body.dark td {
+  border: 1px solid #ffffff;
+}

@@ -21,3 +21,8 @@
 .posts-list {
   list-style-type: none;
 }
+
+body.dark h5,
+body.dark p {
+  color: white;
+}

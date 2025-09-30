@@ -31,3 +31,8 @@
 .dark-light-toggle.light .knob {
   background: #121212;
 }
+
+body.dark {
+  background-color: #000000;
+  color: #fff;
+}
