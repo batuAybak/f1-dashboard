@@ -1,3 +1,8 @@
+.forum-header {
+  text-align: center;
+  margin: 1rem 0;
+}
+
 .forum-topics {
   list-style-type: none;
   padding: 0;

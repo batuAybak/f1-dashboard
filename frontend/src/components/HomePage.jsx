@@ -49,7 +49,7 @@ export default function HomePage() {
   return (
     <>
       <div className="welcome-section">
-        <h1>Welcome to the F1 Dashboard</h1>
+        <h1 className="welcome-title">Welcome to the F1 Dashboard</h1>
         <p>
           Here you can find information about drivers, teams, and races.
           <br />
@@ -68,7 +68,7 @@ export default function HomePage() {
               className="next-race-image"
             />
             <div className="next-race-details">
-              <h3>{closestRace.meeting_official_name}</h3>
+              <h4>{closestRace.meeting_official_name}</h4>
               <p>{new Date(closestRace.date_start).toLocaleDateString()}</p>
               <p>Till lights out and away we go: {countdown}</p>
             </div>

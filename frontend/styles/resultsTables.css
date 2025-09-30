@@ -28,4 +28,5 @@ tbody tr:hover {
 .results-header {
   text-align: center;
   font-size: 2rem;
+  margin: 1rem 0;
 }

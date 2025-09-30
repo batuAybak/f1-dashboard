@@ -15,12 +15,12 @@ export default function ForumPage() {
   return (
     <>
       <div className="forum-page">
-        <h1 className="forum-header">ForumPage</h1>
+        <h2 className="forum-header">ForumPage</h2>
         <ul className="forum-topics">
           {topics.map((topic) => (
             <Link to={`/forum/${topic.id}`} key={topic.id}>
               <li className="forum-topic">
-                <h3 className="forum-topic-title">{topic.title}</h3>
+                <h5 className="forum-topic-title">{topic.title}</h5>
                 <p className="forum-topic-content">{topic.content}</p>
                 <p className="forum-topic-user">
                   Posted by: {topic.first_name} {topic.last_name}

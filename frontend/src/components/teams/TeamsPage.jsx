@@ -9,7 +9,7 @@ export default function TeamsPage() {
 
   return (
     <>
-      <h1 className="teams-header">Teams</h1>
+      <h2 className="teams-header">Teams</h2>
       <ul className="teams-list">
         {teams.map((team) => (
           <TeamList key={team.id} team={team} />

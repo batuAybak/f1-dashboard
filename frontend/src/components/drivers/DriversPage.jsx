@@ -9,7 +9,7 @@ export default function DriversPage() {
 
   return (
     <>
-      <h1 className="drivers-header">Drivers</h1>
+      <h2 className="drivers-header">Drivers</h2>
       <ul className="driver-list">
         {data.map((driver) => (
           <DriverList

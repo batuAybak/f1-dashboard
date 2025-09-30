@@ -1,5 +1,6 @@
 .drivers-header {
   text-align: center;
+  margin: 1rem 0;
 }
 
 .driver-list {
@@ -7,7 +8,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  padding: 0.5rem;
 }
 
 .driver-card {
@@ -18,8 +18,9 @@
   padding: 1rem;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 15rem;
-  height: 10rem;
+  width: 17rem;
+  height: auto;
+  gap: 0.5rem;
 }
 
 .driver-picture-number {
@@ -27,7 +28,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 .driver-headshot {
   vertical-align: center;
@@ -35,7 +36,7 @@
   object-fit: cover;
   border-color: white;
   border-style: solid;
-  width: 5rem;
+  width: 6rem;
 }
 
 .driver-number {
@@ -58,6 +59,7 @@
   font-weight: bold;
   margin-top: 0.5rem;
   color: white;
+  font-size: 1.6rem;
 }
 
 .driver-team {

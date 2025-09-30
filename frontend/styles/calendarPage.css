@@ -1,5 +1,6 @@
 .calendar-header {
   text-align: center;
+  margin: 1rem 0;
 }
 
 .calendar-list {
@@ -10,9 +11,9 @@
   justify-content: center;
 }
 
-.calendar.card {
-  padding: 2rem;
-  justify-content: center;
+.calendar-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .calendar-grandPrix {

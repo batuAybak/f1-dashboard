@@ -28,7 +28,7 @@ export default function TeamList({ team }) {
           drivers
             .filter((driver) => driver.team_name == team.team_name)
             .map((driver) => (
-              <li key={driver.driver_number} className="driver-name">
+              <li key={driver.driver_number} className="team-driver-name">
                 {driver.first_name + " " + driver.last_name}
               </li>
             ))
