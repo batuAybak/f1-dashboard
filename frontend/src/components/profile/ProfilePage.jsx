@@ -51,7 +51,10 @@ export default function ProfilePage() {
               teamName={userFavoriteDriver.team_name}
             />
             <br />
-            <button onClick={() => removeDriver()}>
+            <button
+              className="btn btn-outline-dark btn-sm"
+              onClick={() => removeDriver()}
+            >
               Remove Favorite Driver
             </button>
           </>
@@ -67,7 +70,12 @@ export default function ProfilePage() {
           <>
             <TeamList team={userFavoriteTeam} />
             <br />
-            <button onClick={() => removeTeam()}>Remove Favorite Team</button>
+            <button
+              className="btn btn-outline-dark btn-sm"
+              onClick={() => removeTeam()}
+            >
+              Remove Favorite Team
+            </button>
           </>
         )}
       </div>

@@ -12,29 +12,39 @@ export default function AddFavoriteTeamSection() {
   if (error) return <p>Error: {error}</p>;
   if (!teams) return <p>No teams found.</p>;
 
-  const submitFavoriteTeam = (FormData) => {
-    const teamId = FormData.get("teamId");
-    addFavoriteTeam({ id: teamId });
-  };
-
   return (
     <>
       <p>No favorite team is added.</p>
-      <form action={submitFavoriteTeam}>
-        <select name="teamId" id="teams" defaultValue="" required>
-          <option value="" disabled>
-            Select your Favorite Team
-          </option>
+
+      <div className="dropdown">
+        <button
+          className="btn btn-outline-dark btn-sm dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Select Your Favorite Team
+        </button>
+        <ul className="dropdown-menu">
           {teams.map((team) => (
-            <option key={team.id} value={team.id}>
-              {team.team_name}
-            </option>
+            <li key={team.id}>
+              <button
+                className="dropdown-item dropdown-item-team"
+                type="button"
+                onClick={() => addFavoriteTeam({ id: team.id })}
+              >
+                <img
+                  style={{ backgroundColor: `#${team.team_color}` }}
+                  className="dropdown-team-logo"
+                  src={team.team_logos}
+                  alt={`${team.team_name} logo`}
+                />
+                {team.team_name}
+              </button>
+            </li>
           ))}
-        </select>
-        <br />
-        <br />
-        <button type="submit">Add Favorite Team</button>
-      </form>
+        </ul>
+      </div>
     </>
   );
 }

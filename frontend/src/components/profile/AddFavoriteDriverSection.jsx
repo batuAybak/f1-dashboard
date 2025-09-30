@@ -12,30 +12,40 @@ export default function AddFavoriteDriverSection() {
   if (error) return <p>Error: {error}</p>;
   if (!drivers) return <p>No drivers found.</p>;
 
-  const submitFavoriteDriver = (FormData) => {
-    const driverNumber = FormData.get("driverNumber"); //Get the driver number from form submission
-    addFavoriteDriver({ driver_number: driverNumber }); // Pass driver_number as obj
-  };
-
   return (
     <>
       <p>No favorite driver is added.</p>
 
-      <form action={submitFavoriteDriver}>
-        <select name="driverNumber" id="drivers" defaultValue="" required>
-          <option value="" disabled>
-            Select Your Favorite Driver
-          </option>
+      <div className="dropdown">
+        <button
+          className="btn btn-outline-dark btn-sm dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Select Your Favorite Driver
+        </button>
+        <ul className="dropdown-menu">
           {drivers.map((driver) => (
-            <option key={driver.drive_number} value={driver.driver_number}>
-              {driver.first_name} {driver.last_name}
-            </option>
+            <li key={driver.driver_number}>
+              <button
+                className="dropdown-item dropdown-item-driver"
+                type="button"
+                onClick={() =>
+                  addFavoriteDriver({ driver_number: driver.driver_number })
+                }
+              >
+                <img
+                  className="dropdown-driver-headshot"
+                  src={driver.headshot_url}
+                  alt={`${driver.last_name} headshot`}
+                />
+                {driver.first_name} {driver.last_name}
+              </button>
+            </li>
           ))}
-        </select>
-        <br />
-        <br />
-        <button type="submit">Add Favorite Driver</button>
-      </form>
+        </ul>
+      </div>
     </>
   );
 }
