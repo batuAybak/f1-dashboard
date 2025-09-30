@@ -75,8 +75,8 @@
     display: none;            
     flex-direction: column;
     position: absolute;
-    top: 6.5rem;
-    right: 0;
+    top: 7rem;
+    right: .5rem;
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
     padding: 1rem;
