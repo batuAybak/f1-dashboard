@@ -1,0 +1,33 @@
+.dark-light-toggle {
+  width: 1.75rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.dark-light-toggle .knob {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+}
+
+.dark-light-toggle.dark {
+  background: #333;
+}
+
+.dark-light-toggle.dark .knob {
+  transform: translateX(0.75rem);
+  background: #ffeb3b;
+}
+
+.dark-light-toggle.light .knob {
+  background: #121212;
+}

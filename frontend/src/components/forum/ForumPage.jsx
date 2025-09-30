@@ -15,7 +15,7 @@ export default function ForumPage() {
   return (
     <>
       <div className="forum-page">
-        <h2 className="forum-header">ForumPage</h2>
+        <h2 className="forum-header">Forum</h2>
         <ul className="forum-topics">
           {topics.map((topic) => (
             <Link to={`/forum/${topic.id}`} key={topic.id}>

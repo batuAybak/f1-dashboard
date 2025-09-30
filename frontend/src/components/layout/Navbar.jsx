@@ -2,10 +2,12 @@ import { NavLink, useNavigate } from "react-router";
 
 import { useAuth } from "../../auth/AuthContext";
 import { useState } from "react";
+import { useTheme } from "../ThemeContext";
 
 export default function Navbar() {
   const { token, logout } = useAuth();
   const [open, setOpen] = useState(false);
+  const { toggleTheme, isDark } = useTheme();
   const navigate = useNavigate();
   const handleLogout = () => {
     // Navigate to home on logout
@@ -43,6 +45,14 @@ export default function Navbar() {
             <NavLink to="/login">Log in</NavLink>
           )}
         </nav>
+        <button
+          id="toggle"
+          className={`dark-light-toggle ${isDark ? "dark" : "light"}`}
+          aria-label="Toggle light/dark mode"
+          onClick={toggleTheme}
+        >
+          <span className="knob"></span>
+        </button>
       </section>
       <div className="hamburger" onClick={() => setOpen(!open)}>
         <span></span>

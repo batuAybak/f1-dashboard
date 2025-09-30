@@ -56,3 +56,9 @@
   margin: 0;
   font-size: 1.1rem;
 }
+
+body.dark {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #333;
+}
