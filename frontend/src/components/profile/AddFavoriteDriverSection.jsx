@@ -1,7 +1,9 @@
 import useMutation from "../../api/useMutation";
 import useQuery from "../../api/useQuery";
+import { useTheme } from "../ThemeContext";
 
-export default function AddFavoriteDriverSection({ classTheme, theme }) {
+export default function AddFavoriteDriverSection() {
+  const { theme, oppositeTheme } = useTheme();
   const { data: drivers, loading, error } = useQuery("/drivers", "drivers");
   const { mutate: addFavoriteDriver } = useMutation("POST", `/drivers`, [
     "profile",
@@ -17,7 +19,7 @@ export default function AddFavoriteDriverSection({ classTheme, theme }) {
 
       <div className="dropdown">
         <button
-          className={`btn btn-outline-${classTheme} btn-sm dropdown-toggle`}
+          className={`btn btn-outline-${oppositeTheme} btn-sm dropdown-toggle`}
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"

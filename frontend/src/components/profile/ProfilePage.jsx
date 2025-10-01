@@ -8,8 +8,8 @@ import { useTheme } from "../ThemeContext.jsx";
 
 export default function ProfilePage() {
   const { data: user, loading, error } = useQuery("/users/profile", "profile"); // Fetch user profile with favorite driver and team
-  const { theme } = useTheme();
-  const classTheme = theme === "light" ? "dark" : "light";
+  const { oppositeTheme } = useTheme();
+
   const userFavoriteDriver = user?.userFavoriteDriver;
   const userFavoriteTeam = user?.userFavoriteTeam;
 
@@ -47,7 +47,7 @@ export default function ProfilePage() {
         <section className="favorite-driver">
           <h3>Favorite Driver</h3>
           {userFavoriteDriver === undefined ? (
-            <AddFavoriteDriverSection classTheme={classTheme} theme={theme} />
+            <AddFavoriteDriverSection />
           ) : (
             <>
               <DriverList
@@ -56,7 +56,7 @@ export default function ProfilePage() {
               />
               <br />
               <button
-                className={`btn btn-outline-${classTheme} btn-sm`}
+                className={`btn btn-outline-${oppositeTheme} btn-sm`}
                 onClick={() => removeDriver()}
               >
                 Remove Favorite Driver
@@ -69,13 +69,13 @@ export default function ProfilePage() {
         <section className="favorite-team">
           <h3>Favorite Team</h3>
           {userFavoriteTeam === undefined ? (
-            <AddFavoriteTeamSection classTheme={classTheme} theme={theme} />
+            <AddFavoriteTeamSection />
           ) : (
             <>
               <TeamList team={userFavoriteTeam} />
               <br />
               <button
-                className={`btn btn-outline-${classTheme} btn-sm`}
+                className={`btn btn-outline-${oppositeTheme} btn-sm`}
                 onClick={() => removeTeam()}
               >
                 Remove Favorite Team

@@ -1,9 +1,10 @@
 import useMutation from "../../api/useMutation";
 import useQuery from "../../api/useQuery";
+import { useTheme } from "../ThemeContext";
 
-export default function AddFavoriteTeamSection({ classTheme, theme }) {
+export default function AddFavoriteTeamSection() {
+  const { theme, oppositeTheme } = useTheme();
   const { data: teams, loading, error } = useQuery("/teams", "teams");
-
   const { mutate: addFavoriteTeam } = useMutation("POST", "/teams", [
     "profile",
   ]); // Expects team "id" to be sent as a request body
@@ -18,7 +19,7 @@ export default function AddFavoriteTeamSection({ classTheme, theme }) {
 
       <div className="dropdown">
         <button
-          className={`btn btn-outline-${classTheme} btn-sm dropdown-toggle`}
+          className={`btn btn-outline-${oppositeTheme} btn-sm dropdown-toggle`}
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
