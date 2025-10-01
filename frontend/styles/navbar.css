@@ -45,8 +45,13 @@ body.light #navbar a {
   color: rgb(0, 0, 0);
 }
 
+body.light .logout {
+  color: rgb(0, 0, 0);
+}
+
 #navbar a:hover,
-#navbar a.active {
+#navbar a.active,
+.logout:hover {
   color: rgba(255, 140, 0, 0.916);
 }
 
@@ -71,8 +76,23 @@ body.light #navbar a {
   font-size: 1.25rem;
   cursor: pointer;
 }
-.logout:hover {
-  color: rgba(255, 140, 0, 0.916);
+
+body.light #navbar a:hover {
+  color: black;
+  text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+}
+
+body.light #navbar a.active {
+  color: black;
+  text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+}
+
+body.light .logout:hover {
+  color: black;
+  text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 1px -1px 0 #fff,
+    -1px -1px 0 #fff;
 }
 
 @media (max-width: 1110px) {
@@ -109,8 +129,16 @@ body.light #navbar a {
   }
 
   #navbar a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-size: 1.25rem;
+  }
+
+  body.light #navbar a {
+    color: rgb(255, 255, 255);
+  }
+
+  body.light .logout {
+    color: rgb(255, 255, 255);
   }
 }
