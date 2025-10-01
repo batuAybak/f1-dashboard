@@ -37,9 +37,6 @@ export default function ForumPage() {
                 <strong>Created at:</strong>{" "}
                 {new Date(topic.created_at).toLocaleString()}
               </p>
-              <p className="forum-topic-date">
-                {/* Created at: {new Date(topic.created_at).toLocaleString()} */}
-              </p>
             </Link>
           ))}
         </ul>
