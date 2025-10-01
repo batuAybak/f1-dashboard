@@ -15,8 +15,15 @@ export default function Register() {
   const onRegister = async (formData) => {
     const username = formData.get("username");
     const password = formData.get("password");
+    const firstName = formData.get("firstName");
+    const lastName = formData.get("lastName");
     try {
-      await register({ username, password });
+      await register({
+        username,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+      });
       navigate("/");
     } catch (e) {
       setError(e.message);
@@ -34,7 +41,33 @@ export default function Register() {
               type="text"
               name="username"
               className="form-control"
-              placeholder="Enter username"
+              placeholder="Enter user name"
+              required
+              data-bs-theme={theme}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            First Name
+            <input
+              type="text"
+              name="firstName"
+              className="form-control"
+              placeholder="Enter First Name"
+              required
+              data-bs-theme={theme}
+            />
+          </label>
+        </div>
+        <div className="form-group">
+          <label>
+            Last Name
+            <input
+              type="text"
+              name="lastName"
+              className="form-control"
+              placeholder="Enter Last Name"
               required
               data-bs-theme={theme}
             />
