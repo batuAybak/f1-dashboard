@@ -22,8 +22,6 @@ export default function ForumPage() {
   if (loadingTopics || !topics) return <p>Loading...</p>;
   if (errorTopics) return <p>Error! {errorTopics}</p>;
 
-  // const currentUserId = 3;
-
   return (
     <div className="forum-page">
       <h2 className="forum-header">Forum</h2>
@@ -49,7 +47,10 @@ export default function ForumPage() {
                 {userId == topic.user_id && (
                   <button
                     className="btn btn-outline-danger"
-                    onClick={() => deleteTopic({ topicId: topic.id })}
+                    onClick={(e) => {
+                      e.preventDefault(); // Prevent navigating to topic details
+                      deleteTopic({ topicId: topic.id });
+                    }}
                   >
                     Delete
                   </button>
