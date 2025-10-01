@@ -12,8 +12,8 @@
   justify-content: flex-end;
   gap: 2rem;
   align-items: center;
-  width: 65%;
-  margin-right: 5rem;
+  width: 80%;
+  margin-right: 3rem;
 }
 
 .profile-nav {
@@ -63,7 +63,7 @@
   color:rgba(255, 140, 0, 0.916);
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1110px) {
 
 .hamburger {
     display: flex;
@@ -75,8 +75,8 @@
     display: none;            
     flex-direction: column;
     position: absolute;
-    top: 7rem;
-    right: .5rem;
+    top: 6rem;
+    right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
     padding: 1rem;
@@ -92,8 +92,8 @@
 
   .navigation.open {
     display: flex;  
-    margin-right: .5rem; 
-    width: 20%;
+    margin-right: 0; 
+    width: 23%;
   }
 
   #navbar a {
