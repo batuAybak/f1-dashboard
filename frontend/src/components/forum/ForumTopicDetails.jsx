@@ -2,22 +2,29 @@ import { useParams } from "react-router";
 import useQuery from "../../api/useQuery";
 import AddForumPost from "./AddForumPost";
 import { useTheme } from "../ThemeContext";
+import { useAuth } from "../../auth/AuthContext";
+import useMutation from "../../api/useMutation";
 
 export default function ForumTopicDetails() {
   const { id } = useParams(); // id will be the topic.id from the URL
+  const { userId } = useAuth(); // Get the current user's ID
   const { theme, oppositeTheme } = useTheme();
+
   const {
     data: topicData,
     loadingTopic,
     errorTopic,
   } = useQuery(`/forum/${id}`, "forumTopicDetails");
 
+  // Mutation hook for deleting a post within the topic using topic id
+  const { mutate: deletePost } = useMutation("DELETE", `/forum/${id}`, [
+    "forumTopicDetails",
+  ]);
+
   if (loadingTopic || !topicData) return <p>Loading...</p>;
   if (errorTopic) return <p>Error! {errorTopic}</p>;
 
   const { topic, posts } = topicData;
-
-  //TODO add an option to delete a post if it's the user's own post
 
   return (
     <>
@@ -56,6 +63,16 @@ export default function ForumTopicDetails() {
                 : {post.content}
               </p>
               <p>({new Date(post.created_at).toLocaleString()})</p>
+              {userId == post.user_id && (
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => {
+                    deletePost({ postId: post.id });
+                  }}
+                >
+                  Delete My Post
+                </button>
+              )}
             </li>
           ))}
         </ul>

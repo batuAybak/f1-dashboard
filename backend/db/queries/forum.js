@@ -64,3 +64,14 @@ export async function deleteForumTopic(topicId, userId) {
     const { rows } = await db.query(SQL, [topicId, userId])
     return rows.length > 0 // Return true if a row was deleted, false otherwise
 }
+
+export async function deleteForumPost(postId, topicId, userId) {
+    // Only allow deletion if the post belongs to the user
+    const SQL = `
+    DELETE FROM forum_posts
+    WHERE id = $1 AND topic_id = $2 AND user_id = $3
+    RETURNING *
+    `
+    const { rows } = await db.query(SQL, [postId, topicId, userId])
+    return rows.length > 0 // Return true if a row was deleted, false otherwise
+}

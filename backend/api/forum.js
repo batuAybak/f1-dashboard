@@ -1,4 +1,4 @@
-import { getAllForumTopics, getForumTopicById, getPostsByTopicId, addPostToTopic, addForumTopic, deleteForumTopic } from '#db/queries/forum'
+import { getAllForumTopics, getForumTopicById, getPostsByTopicId, addPostToTopic, addForumTopic, deleteForumTopic, deleteForumPost } from '#db/queries/forum'
 import requireUser from '#middleware/requireUser'
 import express from 'express'
 const forumRouter = express.Router()
@@ -18,7 +18,10 @@ forumRouter.route('/') //Forum page: list of topics
         res.status(201).send(newTopic)
     })
     .delete(async (req, res) => {
-        const deleted = await deleteForumTopic(req.body.topicId, req.user.id);
+        // Delete a forum topic. The topicId should be provided in the request body.
+        // Only the user who created the topic can delete it.
+        const { topicId } = req.body;
+        const deleted = await deleteForumTopic(topicId, req.user.id);
         if (!deleted) return res.status(403).send("You are not allowed to delete this topic");
         res.status(204).send();
     });
@@ -42,6 +45,14 @@ forumRouter.route('/:id') //Single forum topic page: list of posts in the topic
         const newPost = await addPostToTopic(req.topic.id, content, req.user.id);
         res.status(201).send(newPost);
     })
+    .delete(async (req, res) => {
+        // Delete a post from a topic. The postId should be provided in the request body.
+        // Only the user who created the post can delete it.
+        const { postId } = req.body;
+        const deleted = await deleteForumPost(postId, req.topic.id, req.user.id);
+        if (!deleted) return res.status(403).send("You are not allowed to delete this post");
+        res.status(204).send();
+    });
 
 
 forumRouter.use(async (err, req, res, next) => {

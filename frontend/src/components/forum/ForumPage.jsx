@@ -29,34 +29,32 @@ export default function ForumPage() {
         <h4>Forum Topics</h4>
         <ul className="list-group" data-bs-theme={theme}>
           {topics.map((topic) => (
-            <>
-              <Link
-                className="list-group-item list-group-item-action"
-                to={`/forum/${topic.id}`}
-                key={topic.id}
-              >
-                <h5 className="forum-topic-title">{topic.title}</h5>
-                <p className="forum-topic-content">{topic.content}</p>
-                <p className="forum-topic-user">
-                  <strong>Created by:</strong> {topic.first_name}{" "}
-                  {topic.last_name}
-                  {", "}
-                  <strong>Created at:</strong>{" "}
-                  {new Date(topic.created_at).toLocaleString()}
-                </p>
-                {userId == topic.user_id && (
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={(e) => {
-                      e.preventDefault(); // Prevent navigating to topic details
-                      deleteTopic({ topicId: topic.id });
-                    }}
-                  >
-                    Delete
-                  </button>
-                )}
-              </Link>
-            </>
+            <Link
+              className="list-group-item list-group-item-action"
+              to={`/forum/${topic.id}`}
+              key={topic.id}
+            >
+              <h5 className="forum-topic-title">{topic.title}</h5>
+              <p className="forum-topic-content">{topic.content}</p>
+              <p className="forum-topic-user">
+                <strong>Created by:</strong> {topic.first_name}{" "}
+                {topic.last_name}
+                {", "}
+                <strong>Created at:</strong>{" "}
+                {new Date(topic.created_at).toLocaleString()}
+              </p>
+              {userId == topic.user_id && (
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevent navigating to topic details
+                    deleteTopic({ topicId: topic.id });
+                  }}
+                >
+                  Delete
+                </button>
+              )}
+            </Link>
           ))}
         </ul>
       </div>
