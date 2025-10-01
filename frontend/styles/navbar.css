@@ -93,7 +93,8 @@
   .navigation.open {
     display: flex;  
     margin-right: 0; 
-    width: 23%;
+    width: 25%;
+    height: fit-content
   }
 
   #navbar a {
