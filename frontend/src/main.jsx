@@ -15,6 +15,8 @@ import "../styles/profilePage.css";
 import "../styles/forumPage.css";
 import "../styles/resultsTables.css";
 import "../styles/darkLightTheme.css";
+import "../styles/loginPage.css";
+import "../styles/registrationPage.css";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
