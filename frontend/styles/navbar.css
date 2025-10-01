@@ -3,7 +3,15 @@
   justify-content: space-between;
   gap: 2rem;
   max-height: 6rem;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));/
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));
+}
+
+body.light #navbar {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255) 1%,
+    rgb(255, 24, 1, 0.8)
+  );
 }
 
 .navigation {
@@ -23,25 +31,29 @@
 }
 
 .navbar-logo {
-    max-height: 6rem;
-    margin-inline: 1rem;
+  max-height: 6rem;
+  margin-inline: 1rem;
 }
 
 #navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.25rem;
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+body.light #navbar a {
+  color: rgb(0, 0, 0);
 }
 
 #navbar a:hover,
 #navbar a.active {
-    color:rgba(255, 140, 0, 0.916);
+  color: rgba(255, 140, 0, 0.916);
 }
 
 .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .hamburger span {
@@ -52,7 +64,7 @@
   border-radius: 3px;
 }
 
-.logout{
+.logout {
   background-color: transparent;
   border: none;
   color: white;
@@ -60,19 +72,18 @@
   cursor: pointer;
 }
 .logout:hover {
-  color:rgba(255, 140, 0, 0.916);
+  color: rgba(255, 140, 0, 0.916);
 }
 
 @media (max-width: 1110px) {
-
-.hamburger {
+  .hamburger {
     display: flex;
-    justify-content: center;   
-    margin-right: 1rem         
+    justify-content: center;
+    margin-right: 1rem;
   }
 
   .navigation {
-    display: none;            
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 6rem;
@@ -91,10 +102,10 @@
   }
 
   .navigation.open {
-    display: flex;  
-    margin-right: 0; 
+    display: flex;
+    margin-right: 0;
     width: 25%;
-    height: fit-content
+    height: fit-content;
   }
 
   #navbar a {
@@ -103,4 +114,3 @@
     font-size: 1.25rem;
   }
 }
-

@@ -5,3 +5,11 @@
   height: 6rem;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));
 }
+
+body.light .footer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255) 1%,
+    rgb(255, 24, 1, 0.8)
+  );
+}
