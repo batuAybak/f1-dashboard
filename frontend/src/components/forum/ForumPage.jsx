@@ -1,8 +1,10 @@
 import useQuery from "../../api/useQuery";
 import { Link } from "react-router";
 import AddForumTopic from "./AddForumTopic";
+import { useTheme } from "../ThemeContext";
 
 export default function ForumPage() {
+  const { theme } = useTheme();
   const {
     data: topics,
     loadingTopics,
@@ -12,28 +14,37 @@ export default function ForumPage() {
   if (loadingTopics || !topics) return <p>Loading...</p>;
   if (errorTopics) return <p>Error! {errorTopics}</p>;
 
+  //TODO add an option to delete a topic if it's the user's own topic
+
   return (
-    <>
-      <div className="forum-page">
-        <h2 className="forum-header">Forum</h2>
-        <ul className="forum-topics">
+    <div className="forum-page">
+      <h2 className="forum-header">Forum</h2>
+      <div className="forum-topics">
+        <h4>Forum Topics</h4>
+        <ul className="list-group" data-bs-theme={theme}>
           {topics.map((topic) => (
-            <Link to={`/forum/${topic.id}`} key={topic.id}>
-              <li className="forum-topic">
-                <h5 className="forum-topic-title">{topic.title}</h5>
-                <p className="forum-topic-content">{topic.content}</p>
-                <p className="forum-topic-user">
-                  Posted by: {topic.first_name} {topic.last_name}
-                </p>
-                <p className="forum-topic-date">
-                  Created at: {new Date(topic.created_at).toLocaleString()}
-                </p>
-              </li>
+            <Link
+              className="list-group-item list-group-item-action"
+              to={`/forum/${topic.id}`}
+              key={topic.id}
+            >
+              <h5 className="forum-topic-title">{topic.title}</h5>
+              <p className="forum-topic-content">{topic.content}</p>
+              <p className="forum-topic-user">
+                <strong>Created by:</strong> {topic.first_name}{" "}
+                {topic.last_name}
+                {", "}
+                <strong>Created at:</strong>{" "}
+                {new Date(topic.created_at).toLocaleString()}
+              </p>
+              <p className="forum-topic-date">
+                {/* Created at: {new Date(topic.created_at).toLocaleString()} */}
+              </p>
             </Link>
           ))}
         </ul>
       </div>
       <AddForumTopic />
-    </>
+    </div>
   );
 }

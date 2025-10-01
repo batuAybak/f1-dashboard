@@ -1,6 +1,8 @@
 import useMutation from "../../api/useMutation";
+import { useTheme } from "../ThemeContext";
 
 export default function AddForumTopic() {
+  const { theme, oppositeTheme } = useTheme();
   const {
     mutate: addTopic,
     error,
@@ -16,13 +18,30 @@ export default function AddForumTopic() {
   };
 
   return (
-    <form action={addNewTopic}>
-      <h3>Add New Topic</h3>
-      <input type="text" name="title" placeholder="Title" required />
-      <br />
-      <textarea name="content" placeholder="Content" required />
-      <br />
-      <button type="submit">Add Topic</button>
-    </form>
+    <div className="add-forum-topic">
+      <h4>Add New Topic</h4>
+      <form action={addNewTopic} className="new-topic-form">
+        <div className="form-group">
+          <textarea
+            name="title"
+            className="form-control"
+            placeholder="Enter title"
+            data-bs-theme={theme}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <textarea
+            name="content"
+            className="form-control"
+            placeholder="Enter content"
+            data-bs-theme={theme}
+            required
+          />
+        </div>
+        <button className={`btn btn-${oppositeTheme}`}>Add Forum Topic</button>
+        {error && <output>{error}</output>}
+      </form>
+    </div>
   );
 }

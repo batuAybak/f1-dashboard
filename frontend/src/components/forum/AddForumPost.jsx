@@ -1,6 +1,9 @@
 import useMutation from "../../api/useMutation";
+import { useTheme } from "../ThemeContext";
 
 export default function AddForumPost({ topicId }) {
+  const { theme, oppositeTheme } = useTheme();
+
   const {
     mutate: addPost,
     error,
@@ -15,17 +18,21 @@ export default function AddForumPost({ topicId }) {
   };
 
   return (
-    <>
-      <h3>Add a New Post</h3>
+    <div className="add-forum-post">
+      <h4>Add a New Post</h4>
       <form action={addNewPost}>
-        <textarea
-          name="content"
-          placeholder="Write your post here..."
-          required
-        />
+        <div className="form-group">
+          <textarea
+            name="content"
+            className="form-control"
+            placeholder="Write your post here..."
+            data-bs-theme={theme}
+            required
+          />
+        </div>
         <br />
-        <button type="submit">Submit</button>
+        <button className={`btn btn-${oppositeTheme}`}>Submit</button>
       </form>
-    </>
+    </div>
   );
 }

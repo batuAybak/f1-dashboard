@@ -26,3 +26,29 @@ body.dark h5,
 body.dark p {
   color: white;
 }
+
+.forum-posts,
+.add-forum-post,
+.add-forum-topic {
+  margin-top: 3rem;
+}
+
+.back-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+body.light .list-group-item {
+  background-color: #ede2e2b0;
+  margin-bottom: 0.5rem;
+}
+
+.list-group-item {
+  padding: 1rem 1rem;
+}
+
+.new-topic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

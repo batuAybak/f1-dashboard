@@ -1,9 +1,11 @@
 import { useParams } from "react-router";
 import useQuery from "../../api/useQuery";
 import AddForumPost from "./AddForumPost";
+import { useTheme } from "../ThemeContext";
 
 export default function ForumTopicDetails() {
   const { id } = useParams(); // id will be the topic.id from the URL
+  const { theme, oppositeTheme } = useTheme();
   const {
     data: topicData,
     loadingTopic,
@@ -15,30 +17,38 @@ export default function ForumTopicDetails() {
 
   const { topic, posts } = topicData;
 
+  //TODO add an option to delete a post if it's the user's own post
+
   return (
     <>
-      <br />
-      <button onClick={() => window.history.back()}>Back</button>
+      <button
+        className={`btn btn-${oppositeTheme} back-button`}
+        onClick={() => window.history.back()}
+      >
+        Back to Topics
+      </button>
 
       {/* Forum Topic Details */}
-      <section className="forum-topic">
-        <h2>{topic.title}</h2>
-        <p>{topic.content}</p>
-        <p>
-          <strong>Created by:</strong> {topic.first_name} {topic.last_name}
-        </p>
-        <p>
-          <strong>Created at:</strong>{" "}
-          {new Date(topic.created_at).toLocaleString()}
-        </p>
-      </section>
+      <div className="forum-topic">
+        <h4>Forum Topic</h4>
+        <ul className="list-group" data-bs-theme={theme}>
+          <li className="list-group-item">
+            <h4>{topic.title}</h4>
+            <p>{topic.content}</p>
+            <strong>Created by:</strong> {topic.first_name} {topic.last_name}
+            {", "}
+            <strong>Created at:</strong>{" "}
+            {new Date(topic.created_at).toLocaleString()}
+          </li>
+        </ul>
+      </div>
 
       {/* Posts in the Topic */}
-      <section className="forum-posts">
-        <h3>Posts:</h3>
-        <ul className="posts-list">
+      <div className="forum-posts">
+        <h4>Posts</h4>
+        <ul className="list-group posts-list" data-bs-theme={theme}>
           {posts.map((post) => (
-            <li key={post.id} className="post-list-item">
+            <li key={post.id} className="list-group-item post-list-item">
               <p>
                 <strong>
                   {post.first_name} {post.last_name}
@@ -49,7 +59,7 @@ export default function ForumTopicDetails() {
             </li>
           ))}
         </ul>
-      </section>
+      </div>
 
       <AddForumPost topicId={id} />
     </>
