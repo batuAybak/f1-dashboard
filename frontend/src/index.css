@@ -12,6 +12,12 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
+  gap: 0;
+}
+
+main {
+  flex: 1;
+  margin: 1rem;
 }
 
 @media (max-width: 374px) {
