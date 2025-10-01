@@ -52,3 +52,7 @@ body.light .list-group-item {
   flex-direction: column;
   gap: 1rem;
 }
+
+.list-group {
+  gap: 0.5rem;
+}
