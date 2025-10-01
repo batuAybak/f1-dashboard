@@ -1,0 +1,8 @@
+.footer {
+  display: flex;
+  justify-items: end;
+  margin-top: 2rem;
+  width: 99%;
+  height: 6rem;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(185, 42, 7, 0.8));
+}

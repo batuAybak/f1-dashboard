@@ -17,6 +17,7 @@ import "../styles/resultsTables.css";
 import "../styles/darkLightTheme.css";
 import "../styles/loginPage.css";
 import "../styles/registrationPage.css";
+import "../styles/footer.css";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
