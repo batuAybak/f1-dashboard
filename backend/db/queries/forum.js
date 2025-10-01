@@ -53,3 +53,14 @@ export async function addPostToTopic(topicId, content, userId) {
     const { rows } = await db.query(SQL, [topicId, content, userId])
     return rows[0]
 }
+
+export async function deleteForumTopic(topicId, userId) {
+    // Only allow deletion if the topic belongs to the user
+    const SQL = `
+    DELETE FROM forum_topics
+    WHERE id = $1 AND user_id = $2
+    RETURNING *
+    `
+    const { rows } = await db.query(SQL, [topicId, userId])
+    return rows.length > 0 // Return true if a row was deleted, false otherwise
+}

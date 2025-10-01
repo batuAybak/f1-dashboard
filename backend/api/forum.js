@@ -1,4 +1,4 @@
-import { getAllForumTopics, getForumTopicById, getPostsByTopicId, addPostToTopic, addForumTopic } from '#db/queries/forum'
+import { getAllForumTopics, getForumTopicById, getPostsByTopicId, addPostToTopic, addForumTopic, deleteForumTopic } from '#db/queries/forum'
 import requireUser from '#middleware/requireUser'
 import express from 'express'
 const forumRouter = express.Router()
@@ -17,6 +17,11 @@ forumRouter.route('/') //Forum page: list of topics
         const newTopic = await addForumTopic(title, content, req.user.id)
         res.status(201).send(newTopic)
     })
+    .delete(async (req, res) => {
+        const deleted = await deleteForumTopic(req.body.topicId, req.user.id);
+        if (!deleted) return res.status(403).send("You are not allowed to delete this topic");
+        res.status(204).send();
+    });
 
 forumRouter.param("id", async (req, res, next, id) => {
     //Parameter validation
