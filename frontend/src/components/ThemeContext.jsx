@@ -6,11 +6,13 @@ export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(false);
 
   const theme = isDark ? "dark" : "light";
+  const oppositeTheme = isDark ? "light" : "dark";
 
   const toggleTheme = () => setIsDark(!isDark);
   const value = {
     isDark,
     theme,
+    oppositeTheme,
     toggleTheme,
   };
 
