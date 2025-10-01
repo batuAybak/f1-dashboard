@@ -3,8 +3,6 @@ import { useNavigate } from "react-router";
 export default function CalendarList({ circuit }) {
   const navigate = useNavigate();
 
-  console.log(circuit.image);
-
   return (
     <li
       className="calendar-card"
