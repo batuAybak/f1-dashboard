@@ -59,7 +59,7 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <NavLink to="/login" onClick={handleLogout}>
+            <NavLink to="/login" onClick={hamburgerClick}>
               Log in
             </NavLink>
           )}
