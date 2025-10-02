@@ -18,6 +18,10 @@ export default function Register() {
     const firstName = formData.get("firstName");
     const lastName = formData.get("lastName");
     try {
+      // check for password length
+      if (password.length < 6) {
+        throw new Error("Password must be at least 6 characters long");
+      }
       await register({
         username,
         password,
@@ -83,6 +87,7 @@ export default function Register() {
               placeholder="Password"
               required
               data-bs-theme={theme}
+              minLength={6}
             />
           </label>
         </div>
