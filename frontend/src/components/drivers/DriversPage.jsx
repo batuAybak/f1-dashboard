@@ -12,11 +12,7 @@ export default function DriversPage() {
       <h2 className="drivers-header">Drivers</h2>
       <ul className="driver-list">
         {data.map((driver) => (
-          <DriverList
-            key={driver.driver_number}
-            driver={driver}
-            teamName={driver.team_name}
-          />
+          <DriverList key={driver.driver_number} driver={driver} />
         ))}
       </ul>
     </>

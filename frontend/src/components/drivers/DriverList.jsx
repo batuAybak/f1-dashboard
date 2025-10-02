@@ -1,14 +1,14 @@
 import useQuery from "../../api/useQuery.js";
 import { useNavigate } from "react-router";
 
-export default function DriverList({ driver, teamName }) {
+export default function DriverList({ driver }) {
   const { data: teams, loading, error } = useQuery("/teams", "teams");
   const navigate = useNavigate();
 
   if (loading || !teams) return <p>Loading...</p>;
   if (error) return <p>Error! {error}</p>;
 
-  const team = teams.find((team) => team.team_name == teamName);
+  const team = teams.find((team) => team.team_name == driver.team_name);
 
   return (
     <li
