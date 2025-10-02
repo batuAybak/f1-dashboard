@@ -12,6 +12,7 @@ export default function DriverList({ driver, teamName }) {
 
   return (
     <li
+      key={driver.driver_number}
       className="driver-card"
       style={{ background: `#${team.team_color}` }}
       onClick={() => navigate(`/standings/${driver.driver_number}`)}
