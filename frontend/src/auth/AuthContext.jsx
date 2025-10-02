@@ -31,6 +31,7 @@ export function AuthProvider({ children }) {
       body: JSON.stringify(credentials),
     });
     const result = await response.text();
+    if (!response.ok) throw Error(result);
     // Add user id as a state variable
     const responseUser = await fetch(API + "/users/profile", {
       headers: { Authorization: `Bearer ${result}` },
