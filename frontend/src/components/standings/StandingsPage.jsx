@@ -11,17 +11,10 @@ export default function StandingsPage() {
     errorDriver,
   } = useQuery("/drivers", "drivers");
 
-  const { data: team } = useQuery("/teams", "teams");
-
   if (loading || !data || loadingDriver) return <p>Loading...</p>;
   if (error || errorDriver) return <p>Error! {error}</p>;
 
-  // console.log(data);
-  console.log(driver);
-  console.log(team);
-
   const orderStandings = data.sort((a, b) => b.points - a.points);
-  // console.log(orderStandings);
 
   const driverName = (number) => {
     const name = driver?.find((driver) => driver?.driver_number === number);
@@ -94,7 +87,7 @@ export default function StandingsPage() {
           </thead>
           <tbody>
             {teamStandings.map((team, index) => (
-              <tr key={team.team_name}>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{team.team_name}</td>
                 <td>{team.points}</td>

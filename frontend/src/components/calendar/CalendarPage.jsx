@@ -12,7 +12,7 @@ export default function DriversPage() {
       <h2 className="calendar-header">Calendar</h2>
       <ul className="calendar-list">
         {calendar.map((circuit) => (
-          <CalendarList key={calendar.meeting_key} circuit={circuit} />
+          <CalendarList key={circuit.meeting_key} circuit={circuit} />
         ))}
       </ul>
     </>

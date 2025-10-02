@@ -5,6 +5,7 @@ export default function CalendarList({ circuit }) {
 
   return (
     <li
+      key={circuit.meeting_key}
       className="calendar-card"
       onClick={() => navigate(`/calendar/${circuit.meeting_key}`)}
       style={{

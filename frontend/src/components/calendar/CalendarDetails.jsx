@@ -21,8 +21,6 @@ export default function GrandPrixDetails() {
   const race = data[0];
   const results = data[1];
 
-  console.log(results);
-
   const driverName = (number) => {
     const name = driver?.find((driver) => driver?.driver_number === number);
     const fullName = name?.first_name + " " + name?.last_name;
@@ -40,14 +38,14 @@ export default function GrandPrixDetails() {
               <h2 className="race-country-name">{race.country_name}</h2>
               <h2 className="race-country-code">({race.country_code})</h2>
             </div>
-            <p1 className="race-location">{race.location}</p1>
-            <p2 className="race-date">
+            <p className="race-location">{race.location}</p>
+            <p className="race-date">
               {new Date(race.date_start).toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "short",
                 year: "numeric",
               })}
-            </p2>
+            </p>
           </div>
         </div>
       </section>
@@ -64,7 +62,7 @@ export default function GrandPrixDetails() {
                   <th>Driver #</th>
                   <th>Driver Name</th>
                   <th>Points</th>
-                  <th>Gap</th>{" "}
+                  <th>Gap</th>
                 </>
               )}
             </tr>
