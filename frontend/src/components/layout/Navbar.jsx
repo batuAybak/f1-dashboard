@@ -7,7 +7,7 @@ import { useTheme } from "../ThemeContext";
 export default function Navbar() {
   const { token, logout } = useAuth();
   const [open, setOpen] = useState(false);
-  const { toggleTheme, isDark } = useTheme();
+  const { toggleTheme, theme } = useTheme();
   const navigate = useNavigate();
   const handleLogout = () => {
     // Navigate to home on logout
@@ -64,7 +64,7 @@ export default function Navbar() {
         </nav>
         <button
           id="toggle"
-          className={`dark-light-toggle ${isDark ? "dark" : "light"}`}
+          className={`dark-light-toggle ${theme}`}
           aria-label="Toggle light/dark mode"
           onClick={toggleTheme}
         >
