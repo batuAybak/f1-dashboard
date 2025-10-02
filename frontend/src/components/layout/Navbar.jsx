@@ -13,6 +13,11 @@ export default function Navbar() {
     // Navigate to home on logout
     logout();
     navigate("/");
+    setOpen(false);
+  };
+
+  const hamburgerClick = () => {
+    setOpen(false);
   };
 
   return (
@@ -25,18 +30,30 @@ export default function Navbar() {
         />
       </section>
       <section className={`navigation ${open ? "open" : ""}`}>
-        <NavLink id="brand" to="/">
+        <NavLink id="brand" to="/" onClick={hamburgerClick}>
           Home
         </NavLink>
-        <NavLink to="/drivers">Drivers</NavLink>
-        <NavLink to="/teams">Teams</NavLink>
-        <NavLink to="/standings">Standings</NavLink>
-        <NavLink to="/calendar">Calendar</NavLink>
+        <NavLink to="/drivers" onClick={hamburgerClick}>
+          Drivers
+        </NavLink>
+        <NavLink to="/teams" onClick={hamburgerClick}>
+          Teams
+        </NavLink>
+        <NavLink to="/standings" onClick={hamburgerClick}>
+          Standings
+        </NavLink>
+        <NavLink to="/calendar" onClick={hamburgerClick}>
+          Calendar
+        </NavLink>
         <nav className="profile-nav">
           {token ? (
             <>
-              <NavLink to="/forum">Forum</NavLink>
-              <NavLink to="/profile">Profile</NavLink>
+              <NavLink to="/forum" onClick={hamburgerClick}>
+                Forum
+              </NavLink>
+              <NavLink to="/profile" onClick={hamburgerClick}>
+                Profile
+              </NavLink>
               <button className="logout" onClick={handleLogout}>
                 Log out
               </button>
