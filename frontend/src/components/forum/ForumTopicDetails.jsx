@@ -5,11 +5,16 @@ import { useTheme } from "../ThemeContext";
 import { useAuth } from "../../auth/AuthContext";
 import useMutation from "../../api/useMutation";
 
+/**
+ * ForumTopicDetails displays a single forum topic and its posts.
+ * Allows users to delete their own posts and add new posts.
+ */
 export default function ForumTopicDetails() {
   const { id } = useParams(); // id will be the topic.id from the URL
   const { userId } = useAuth(); // Get the current user's ID
   const { theme, oppositeTheme } = useTheme();
 
+  // Fetch topic and posts for this topic
   const {
     data: topicData,
     loadingTopic,
@@ -28,6 +33,7 @@ export default function ForumTopicDetails() {
 
   return (
     <>
+      {/* Back button to forum topics list */}
       <button
         className={`btn btn-${oppositeTheme} back-button`}
         onClick={() => window.history.back()}
@@ -54,6 +60,7 @@ export default function ForumTopicDetails() {
       <div className="forum-posts">
         <h4>Posts</h4>
         <ul className="list-group posts-list" data-bs-theme={theme}>
+          {/* List all posts for this topic */}
           {posts.map((post) => (
             <li key={post.id} className="list-group-item post-list-item">
               <p>
@@ -63,6 +70,7 @@ export default function ForumTopicDetails() {
                 : {post.content}
               </p>
               <p>({new Date(post.created_at).toLocaleString()})</p>
+              {/* Show delete button if user owns the post */}
               {userId == post.user_id && (
                 <button
                   className="btn btn-outline-danger"
@@ -78,6 +86,7 @@ export default function ForumTopicDetails() {
         </ul>
       </div>
 
+      {/* Form to add a new post to this topic */}
       <AddForumPost topicId={id} />
     </>
   );

@@ -1,5 +1,9 @@
+
 import db from "#db/client";
 
+/**
+ * Get all drivers from the drivers table.
+ */
 export async function getAllDrivers() {
   const SQL = `
     SELECT * 
@@ -9,6 +13,9 @@ export async function getAllDrivers() {
   return drivers;
 }
 
+/**
+ * Get a single driver by driver number.
+ */
 export async function getDriverById(id) {
   const SQL = `
     SELECT * 
@@ -21,6 +28,9 @@ export async function getDriverById(id) {
   return driver;
 }
 
+/**
+ * Get a single driver by first or last name.
+ */
 export async function getDriverByName(firstName, lastName) {
   const SQL = `
     SELECT * 

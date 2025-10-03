@@ -1,9 +1,14 @@
 import useMutation from "../../api/useMutation";
 import { useTheme } from "../ThemeContext";
 
+/**
+ * AddForumPost provides a form to add a new post to a forum topic.
+ * Submits the post content using a mutation hook.
+ */
 export default function AddForumPost({ topicId }) {
   const { theme, oppositeTheme } = useTheme();
 
+  // Mutation hook for adding a post
   const {
     mutate: addPost,
     error,
@@ -12,9 +17,12 @@ export default function AddForumPost({ topicId }) {
   if (loading) return <p>Submitting post...</p>;
   if (error) return <p>Error submitting post: {error}</p>;
 
+  /**
+   * Handles form submission for a new post.
+   */
   const addNewPost = (formData) => {
-    const content = formData.get("content"); //Get the content from form submission
-    addPost({ content }); // Pass content as obj
+    const content = formData.get("content");
+    addPost({ content });
   };
 
   return (
@@ -22,6 +30,7 @@ export default function AddForumPost({ topicId }) {
       <h4>Add a New Post</h4>
       <form action={addNewPost}>
         <div className="form-group">
+          {/* Post content textarea */}
           <textarea
             name="content"
             className="form-control"

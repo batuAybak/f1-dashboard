@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import useQuery from "../api/useQuery";
 
+/**
+ * HomePage displays a welcome message and a countdown to the next race.
+ * Fetches the race calendar and finds the closest upcoming race.
+ */
 export default function HomePage() {
+  // Fetch the race calendar
   const {
     data: calendar,
     loadingCalendar,
@@ -13,30 +18,32 @@ export default function HomePage() {
     (race) => new Date(race.date_start) > new Date()
   );
 
-  // Countdown state
+  // Countdown state for the next race
   const [countdown, setCountdown] = useState("");
 
-  // useEffect to update the countdown every second
+  // Update the countdown every second
   useEffect(() => {
     if (!closestRace) return;
-    const target = new Date(closestRace.date_start).getTime(); // Get next race time in milliseconds
+    const target = new Date(closestRace.date_start).getTime();
 
+    /**
+     * Updates the countdown timer to the next race.
+     */
     const updateCountdown = () => {
-      const now = Date.now(); // Current time in milliseconds
-      const diff = target - now; // Difference in milliseconds
+      const now = Date.now();
+      const diff = target - now;
       if (diff <= 0) {
-        // If the race has started
         setCountdown("Race started!");
         return;
       }
-      const hours = Math.floor(diff / (1000 * 60 * 60)); // Convert milliseconds to hours
-      const minutes = Math.floor((diff / (1000 * 60)) % 60); // Convert milliseconds to minutes
-      const seconds = Math.floor((diff / 1000) % 60); // Convert milliseconds to seconds
-      setCountdown(`${hours} hours ${minutes} minutes ${seconds} seconds`); // Update countdown string
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      setCountdown(`${hours} hours ${minutes} minutes ${seconds} seconds`);
     };
 
-    updateCountdown(); // Initial call to set the countdown immediately
-    const interval = setInterval(updateCountdown, 1000); // Update every second
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
   }, [closestRace]);
 

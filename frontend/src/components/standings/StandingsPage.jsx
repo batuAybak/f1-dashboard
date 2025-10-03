@@ -1,10 +1,16 @@
 import { useNavigate } from "react-router";
 import useQuery from "../../api/useQuery";
 
+/**
+ * StandingsPage displays the driver and team standings tables.
+ * Fetches standings and driver data, and computes team points.
+ */
 export default function StandingsPage() {
   const navigate = useNavigate();
+  // Fetch all driver standings
   const { data, loading, error } = useQuery("/standings", "standings");
 
+  // Fetch all drivers for name and team lookup
   const {
     data: driver,
     loadingDriver,
@@ -14,14 +20,21 @@ export default function StandingsPage() {
   if (loading || !data || loadingDriver) return <p>Loading...</p>;
   if (error || errorDriver) return <p>Error! {error}</p>;
 
+  // Sort standings by points descending
   const orderStandings = data.sort((a, b) => b.points - a.points);
 
+  /**
+   * Returns the full name of a driver given their number.
+   */
   const driverName = (number) => {
     const name = driver?.find((driver) => driver?.driver_number === number);
     const fullName = name?.first_name + " " + name?.last_name;
     return fullName;
   };
 
+  /**
+   * Computes team points from driver standings.
+   */
   const teamPoints = () => {
     const teamObj = {};
 

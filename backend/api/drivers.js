@@ -1,3 +1,4 @@
+
 import { getAllDrivers, getDriverById } from "#db/queries/drivers";
 import { addUserFavoriteDriver, deleteUserFavoriteDriver } from "#db/queries/userFavorites";
 import requireBody from "#middleware/requireBody";
@@ -6,6 +7,14 @@ import express from "express";
 const driversRouter = express.Router();
 export default driversRouter;
 
+/**
+ * Drivers API router for driver endpoints.
+ * Provides endpoints to get all drivers, add/remove favorites, and get driver by id.
+ */
+
+
+// GET /drivers - Display all drivers
+// POST /drivers - Add driver to user's favorite drivers
 driversRouter
   .route("/")
   .get(async (req, res) => { // Display all drivers
@@ -20,6 +29,8 @@ driversRouter
     res.send(favoriteDriver);
   })
 
+
+// Param middleware: fetch driver by id
 driversRouter.param("id", async (req, res, next, id) => {
   //Parameter validation
   const driver = await getDriverById(id);
@@ -28,6 +39,9 @@ driversRouter.param("id", async (req, res, next, id) => {
   next();
 });
 
+
+// GET /drivers/:id - Display driver by id
+// DELETE /drivers/:id - Delete driver from user's favorite drivers
 driversRouter
   .route("/:id")
   .get(async (req, res) => { // Display driver by id

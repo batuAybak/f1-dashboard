@@ -1,14 +1,20 @@
 import { useParams } from "react-router";
 import useQuery from "../../api/useQuery";
 
+/**
+ * GrandPrixDetails displays detailed information about a specific Grand Prix event,
+ * including race details and results. Fetches data based on the meeting key from the URL.
+ * Shows driver names, positions, and points for the race.
+ */
 export default function GrandPrixDetails() {
   const { meetingKey } = useParams();
-  //   const navigate = useNavigate();
+  // Fetch race details and results for the selected meeting
   const { data, loading, error } = useQuery(
     `/calendar/${meetingKey}`,
     "grandPrix"
   );
 
+  // Fetch all drivers for mapping driver numbers to names
   const {
     data: driver,
     loadingDriver,
@@ -21,6 +27,9 @@ export default function GrandPrixDetails() {
   const race = data[0];
   const results = data[1];
 
+  /**
+   * Returns the full name of a driver given their number.
+   */
   const driverName = (number) => {
     const name = driver?.find((driver) => driver?.driver_number === number);
     const fullName = name?.first_name + " " + name?.last_name;
@@ -31,6 +40,7 @@ export default function GrandPrixDetails() {
     <>
       <section className="calendar-details-main">
         <div className="race-page">
+          {/* Race image */}
           <img src={race.image} alt="Image link" className="race-images" />
           <div className="race-details">
             <h1 className="race-name">{race.meeting_name}</h1>
@@ -70,11 +80,15 @@ export default function GrandPrixDetails() {
           <tbody>
             {results.map((result, index) => (
               <tr key={index}>
-                {/* <tr key={index}> */}
+                {/* Position in race */}
                 <td>{index + 1}</td>
+                {/* Driver number */}
                 <td>{result.driver_number}</td>
+                {/* Driver full name */}
                 <td>{driverName(result.driver_number)}</td>
+                {/* Points scored */}
                 <td>{result.points}</td>
+                {/* Gap to leader or DNF/DNS/DSQ status */}
                 <td>
                   {result.dnf || result.dns || result.dsq
                     ? "dnf"

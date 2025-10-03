@@ -1,5 +1,9 @@
+
 import db from "#db/client";
 
+/**
+ * Get all forum topics, including the creator's first and last name.
+ */
 export async function getAllForumTopics() {
     const SQL = `
     SELECT forum_topics.*, users.first_name, users.last_name
@@ -10,6 +14,9 @@ export async function getAllForumTopics() {
     return rows
 }
 
+/**
+ * Get a single forum topic by id, including the creator's name.
+ */
 export async function getForumTopicById(id) {
     const SQL = `
     SELECT forum_topics.*, users.first_name, users.last_name
@@ -22,6 +29,9 @@ export async function getForumTopicById(id) {
     return rows[0]
 }
 
+/**
+ * Get all posts for a given topic, including each poster's name.
+ */
 export async function getPostsByTopicId(id) {
     const SQL = `
     SELECT forum_posts.*, users.first_name, users.last_name
@@ -34,6 +44,9 @@ export async function getPostsByTopicId(id) {
     return rows
 }
 
+/**
+ * Add a new forum topic.
+ */
 export async function addForumTopic(title, content, userId) {
     const SQL = `
     INSERT INTO forum_topics (title, content, user_id)
@@ -44,6 +57,9 @@ export async function addForumTopic(title, content, userId) {
     return rows[0]
 }
 
+/**
+ * Add a new post to a forum topic.
+ */
 export async function addPostToTopic(topicId, content, userId) {
     const SQL = `
     INSERT INTO forum_posts (topic_id, content, user_id)
@@ -54,6 +70,9 @@ export async function addPostToTopic(topicId, content, userId) {
     return rows[0]
 }
 
+/**
+ * Delete a forum topic.
+ */
 export async function deleteForumTopic(topicId, userId) {
     // Only allow deletion if the topic belongs to the user
     const SQL = `
@@ -65,6 +84,9 @@ export async function deleteForumTopic(topicId, userId) {
     return rows.length > 0 // Return true if a row was deleted, false otherwise
 }
 
+/**
+ * Delete a post from a forum topic.
+ */
 export async function deleteForumPost(postId, topicId, userId) {
     // Only allow deletion if the post belongs to the user
     const SQL = `

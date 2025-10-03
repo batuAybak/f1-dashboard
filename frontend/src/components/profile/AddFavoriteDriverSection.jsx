@@ -2,12 +2,18 @@ import useMutation from "../../api/useMutation";
 import useQuery from "../../api/useQuery";
 import { useTheme } from "../ThemeContext";
 
+/**
+ * AddFavoriteDriverSection provides a dropdown to select and add a favorite driver.
+ * Submits the selected driver using a mutation hook.
+ */
 export default function AddFavoriteDriverSection() {
   const { theme, oppositeTheme } = useTheme();
+  // Fetch all drivers
   const { data: drivers, loading, error } = useQuery("/drivers", "drivers");
+  // Mutation hook for adding favorite driver
   const { mutate: addFavoriteDriver } = useMutation("POST", `/drivers`, [
     "profile",
-  ]); //Expects "driver_number" to be sent as request body
+  ]); // Expects "driver_number" to be sent as request body
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -27,6 +33,7 @@ export default function AddFavoriteDriverSection() {
           Select Your Favorite Driver
         </button>
         <ul className="dropdown-menu" data-bs-theme={theme}>
+          {/* List all drivers as dropdown items */}
           {drivers.map((driver) => (
             <li key={driver.driver_number}>
               <button

@@ -1,12 +1,24 @@
+
 import { getAllForumTopics, getForumTopicById, getPostsByTopicId, addPostToTopic, addForumTopic, deleteForumTopic, deleteForumPost } from '#db/queries/forum'
 import requireUser from '#middleware/requireUser'
 import express from 'express'
 const forumRouter = express.Router()
 export default forumRouter
 
-forumRouter.use(requireUser) //All forum routes require user to be logged in
+/**
+ * Forum API router for forum topic and post endpoints.
+ * All routes require authentication.
+ */
 
-forumRouter.route('/') //Forum page: list of topics
+
+// All forum routes require user to be logged in
+forumRouter.use(requireUser)
+
+
+// GET /forum - List all forum topics
+// POST /forum - Add a new forum topic
+// DELETE /forum - Delete a forum topic (only by creator)
+forumRouter.route('/')
     .get(async (req, res) => {
         const allForumTopics = await getAllForumTopics()
         res.send(allForumTopics)
@@ -26,6 +38,8 @@ forumRouter.route('/') //Forum page: list of topics
         res.status(204).send();
     });
 
+
+// Param middleware: fetch forum topic by id
 forumRouter.param("id", async (req, res, next, id) => {
     //Parameter validation
     const topic = await getForumTopicById(id);
@@ -34,7 +48,11 @@ forumRouter.param("id", async (req, res, next, id) => {
     next();
 });
 
-forumRouter.route('/:id') //Single forum topic page: list of posts in the topic
+
+// GET /forum/:id - Get topic and its posts
+// POST /forum/:id - Add a post to a topic
+// DELETE /forum/:id - Delete a post from a topic (only by creator)
+forumRouter.route('/:id')
     .get(async (req, res) => {
         const posts = await getPostsByTopicId(req.topic.id);
         res.send({ topic: req.topic, posts }); //Send both the forum topic and its posts

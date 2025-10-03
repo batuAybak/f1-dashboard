@@ -1,3 +1,4 @@
+
 import { getAllTeams, getTeamById, getTeamDrivers } from "#db/queries/teams";
 import { addUserFavoriteTeam, deleteUserFavoriteTeam } from "#db/queries/userFavorites";
 import express from "express";
@@ -6,6 +7,14 @@ export default teamsRouter;
 import requireUser from "#middleware/requireUser";
 import requireBody from "#middleware/requireBody";
 
+/**
+ * Teams API router for team endpoints.
+ * Provides endpoints to get all teams, add/remove favorites, get team by id, and get drivers by team.
+ */
+
+
+// GET /teams - Display all teams
+// POST /teams - Add team to user's favorite teams
 teamsRouter
   .route("/")
   .get(async (req, res) => { // Display all teams
@@ -17,6 +26,8 @@ teamsRouter
     res.send(favoriteTeam);
   })
 
+
+// Param middleware: fetch team by id
 teamsRouter.param("id", async (req, res, next, id) => {
   //Parameter validation
   const team = await getTeamById(id);
@@ -25,6 +36,9 @@ teamsRouter.param("id", async (req, res, next, id) => {
   next();
 });
 
+
+// GET /teams/:id - Display team by id
+// DELETE /teams/:id - Remove team from user's favorite teams
 teamsRouter
   .route("/:id")
   .get(async (req, res) => { // Display team by id
@@ -40,8 +54,10 @@ teamsRouter
   });
 
 
+
+// GET /teams/:id/drivers - Display drivers by team id
 teamsRouter
-  .route("/:id/drivers") // Display drivers by team id
+  .route("/:id/drivers")
   .get(async (req, res) => {
     const teamDrivers = await getTeamDrivers(req.team.team_name);
     res.send(teamDrivers);

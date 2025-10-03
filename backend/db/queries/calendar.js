@@ -1,5 +1,9 @@
+
 import db from "#db/client";
 
+/**
+ * Get all races from the calendar table, ordered by start date.
+ */
 export async function getAllRaces() {
   const SQL = `
     SELECT * 
@@ -10,6 +14,9 @@ export async function getAllRaces() {
   return races;
 }
 
+/**
+ * Get a single race from the calendar table by meeting key.
+ */
 export async function getRaceByCircuit(meetingKey) {
   const SQL = `
     SELECT * 

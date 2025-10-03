@@ -6,8 +6,13 @@ import AddFavoriteDriverSection from "./AddFavoriteDriverSection.jsx";
 import AddFavoriteTeamSection from "./AddFavoriteTeamSection.jsx";
 import { useTheme } from "../ThemeContext.jsx";
 
+/**
+ * ProfilePage displays the user's profile, including favorite driver and team.
+ * Allows adding or removing favorites using mutation hooks.
+ */
 export default function ProfilePage() {
-  const { data: user, loading, error } = useQuery("/users/profile", "profile"); // Fetch user profile with favorite driver and team
+  // Fetch user profile with favorite driver and team
+  const { data: user, loading, error } = useQuery("/users/profile", "profile");
   const { oppositeTheme } = useTheme();
 
   const userFavoriteDriver = user?.userFavoriteDriver;
@@ -50,6 +55,7 @@ export default function ProfilePage() {
             <AddFavoriteDriverSection />
           ) : (
             <>
+              {/* Show favorite driver and remove button */}
               <DriverList
                 driver={userFavoriteDriver}
                 teamName={userFavoriteDriver.team_name}
@@ -72,6 +78,7 @@ export default function ProfilePage() {
             <AddFavoriteTeamSection />
           ) : (
             <>
+              {/* Show favorite team and remove button */}
               <TeamList team={userFavoriteTeam} />
               <br />
               <button

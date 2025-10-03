@@ -1,8 +1,13 @@
 import useMutation from "../../api/useMutation";
 import { useTheme } from "../ThemeContext";
 
+/**
+ * AddForumTopic provides a form to add a new forum topic.
+ * Submits the topic title and content using a mutation hook.
+ */
 export default function AddForumTopic() {
   const { theme, oppositeTheme } = useTheme();
+  // Mutation hook for adding a topic
   const {
     mutate: addTopic,
     error,
@@ -11,10 +16,13 @@ export default function AddForumTopic() {
   if (loading) return <p>Submitting topic...</p>;
   if (error) return <p>Error submitting topic: {error}</p>;
 
+  /**
+   * Handles form submission for a new topic.
+   */
   const addNewTopic = (formData) => {
-    const title = formData.get("title"); //Get the title from form submission
-    const content = formData.get("content"); //Get the content from form submission
-    addTopic({ title, content }); // Pass title and content as obj
+    const title = formData.get("title");
+    const content = formData.get("content");
+    addTopic({ title, content });
   };
 
   return (
@@ -22,6 +30,7 @@ export default function AddForumTopic() {
       <h4>Add New Topic</h4>
       <form action={addNewTopic} className="new-topic-form">
         <div className="form-group">
+          {/* Topic title textarea */}
           <textarea
             name="title"
             className="form-control"
@@ -31,6 +40,7 @@ export default function AddForumTopic() {
           />
         </div>
         <div className="form-group">
+          {/* Topic content textarea */}
           <textarea
             name="content"
             className="form-control"

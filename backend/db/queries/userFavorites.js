@@ -1,17 +1,9 @@
+
 import db from "#db/client";
 
-// export async function getUserFavorites(userId) {
-//   const SQL = `
-//     SELECT user_id, driver_id, team_id
-//     FROM favorite_drivers
-//     JOIN favorite_teams USING (user_id)
-//     WHERE user_id = $1
-//     `;
-//   const {
-//     rows: [favorites],
-//   } = await db.query(SQL, [userId]);
-//   return favorites;
-// }
+/**
+ * Get the user's favorite driver (joined with driver details).
+ */
 
 export async function getUserFavoriteDriver(userId) {
   const SQL = `
@@ -26,6 +18,9 @@ export async function getUserFavoriteDriver(userId) {
   return driver;
 }
 
+/**
+ * Get the user's favorite team (joined with team details).
+ */
 export async function getUserFavoriteTeam(userId) {
   const SQL = `
   SELECT t.*
@@ -39,6 +34,9 @@ export async function getUserFavoriteTeam(userId) {
   return team;
 }
 
+/**
+ * Add a favorite driver for a user.
+ */
 export async function addUserFavoriteDriver(userId, driverId) {
   const SQL = `
     INSERT INTO favorite_drivers (user_id, driver_id)
@@ -51,6 +49,9 @@ export async function addUserFavoriteDriver(userId, driverId) {
   return favorite;
 }
 
+/**
+ * Add a favorite team for a user.
+ */
 export async function addUserFavoriteTeam(userId, teamId) {
   const SQL = `
     INSERT INTO favorite_teams (user_id, team_id)
@@ -63,6 +64,9 @@ export async function addUserFavoriteTeam(userId, teamId) {
   return favorite;
 }
 
+/**
+ * Delete a favorite driver for a user.
+ */
 export async function deleteUserFavoriteDriver(userId, driverId) {
   const SQL = `
     DELETE FROM favorite_drivers
@@ -75,6 +79,9 @@ export async function deleteUserFavoriteDriver(userId, driverId) {
   return favoriteDriver;
 }
 
+/**
+ * Delete a favorite team for a user.
+ */
 export async function deleteUserFavoriteTeam(userId, teamId) {
   const SQL = `
     DELETE FROM favorite_teams
