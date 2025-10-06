@@ -59,7 +59,7 @@ export default function ForumPage() {
                     deleteTopic({ topicId: topic.id });
                   }}
                 >
-                  Delete
+                  Delete Topic
                 </button>
               )}
             </Link>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useQuery from "../../api/useQuery";
 import AddForumPost from "./AddForumPost";
 import { useTheme } from "../ThemeContext";
@@ -13,6 +13,7 @@ export default function ForumTopicDetails() {
   const { id } = useParams(); // id will be the topic.id from the URL
   const { userId } = useAuth(); // Get the current user's ID
   const { theme, oppositeTheme } = useTheme();
+  const navigate = useNavigate();
 
   // Fetch topic and posts for this topic
   const {
@@ -24,6 +25,11 @@ export default function ForumTopicDetails() {
   // Mutation hook for deleting a post within the topic using topic id
   const { mutate: deletePost } = useMutation("DELETE", `/forum/${id}`, [
     "forumTopicDetails",
+  ]);
+
+  // Mutation hook for deleting a topic
+  const { mutate: deleteTopic } = useMutation("DELETE", `/forum`, [
+    "forumTopics",
   ]);
 
   if (loadingTopic || !topicData) return <p>Loading...</p>;
@@ -53,6 +59,18 @@ export default function ForumTopicDetails() {
             <strong>Created at:</strong>{" "}
             {new Date(topic.created_at).toLocaleString()}
           </li>
+          {userId == topic.user_id && (
+            <button
+              className="btn btn-outline-danger"
+              onClick={(e) => {
+                e.preventDefault();
+                deleteTopic({ topicId: topic.id });
+                navigate("/forum");
+              }}
+            >
+              Delete Topic
+            </button>
+          )}
         </ul>
       </div>
 
@@ -61,28 +79,32 @@ export default function ForumTopicDetails() {
         <h4>Posts</h4>
         <ul className="list-group posts-list" data-bs-theme={theme}>
           {/* List all posts for this topic */}
-          {posts.map((post) => (
-            <li key={post.id} className="list-group-item post-list-item">
-              <p>
-                <strong>
-                  {post.first_name} {post.last_name}
-                </strong>
-                : {post.content}
-              </p>
-              <p>({new Date(post.created_at).toLocaleString()})</p>
-              {/* Show delete button if user owns the post */}
-              {userId == post.user_id && (
-                <button
-                  className="btn btn-outline-danger"
-                  onClick={() => {
-                    deletePost({ postId: post.id });
-                  }}
-                >
-                  Delete My Post
-                </button>
-              )}
-            </li>
-          ))}
+          {posts.length === 0 ? (
+            <p>There are no posts yet. Be the first to comment!</p>
+          ) : (
+            posts.map((post) => (
+              <li key={post.id} className="list-group-item post-list-item">
+                <p>
+                  <strong>
+                    {post.first_name} {post.last_name}
+                  </strong>
+                  : {post.content}
+                </p>
+                <p>({new Date(post.created_at).toLocaleString()})</p>
+                {/* Show delete button if user owns the post */}
+                {userId == post.user_id && (
+                  <button
+                    className="btn btn-outline-danger"
+                    onClick={() => {
+                      deletePost({ postId: post.id });
+                    }}
+                  >
+                    Delete Post
+                  </button>
+                )}
+              </li>
+            ))
+          )}
         </ul>
       </div>
 
