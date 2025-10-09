@@ -5,10 +5,9 @@
 
 .favorites {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 3rem;
-  gap: 2em;
 }
 
 .favorite-driver,
@@ -36,4 +35,8 @@
   height: 50px;
   border-radius: 50%;
   margin-right: 0.5rem;
+}
+.dropdown-menu {
+  max-height: 30vh;
+  overflow-y: auto;
 }
