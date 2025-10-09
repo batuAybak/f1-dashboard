@@ -124,7 +124,7 @@ body.light .logout:hover {
   .navigation.open {
     display: flex;
     margin-right: 0;
-    width: 25%;
+    width: 30%;
     height: fit-content;
   }
 

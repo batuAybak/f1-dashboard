@@ -16,6 +16,12 @@
   border-radius: 8px;
 }
 
+.calendar-card:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+  transform: translateY(-5px);
+}
+
 .calendar-grandPrix {
   display: flex;
   margin-block: 2rem;
