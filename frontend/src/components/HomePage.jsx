@@ -24,28 +24,29 @@ export default function HomePage() {
   // Update the countdown every second
   useEffect(() => {
     if (!closestRace) return;
-    const target = new Date(closestRace.date_start).getTime();
+    const target = new Date(closestRace.date_start).getTime(); // Converts the race start date to milliseconds (timestamp format)
 
     /**
      * Updates the countdown timer to the next race.
      */
     const updateCountdown = () => {
-      const now = Date.now();
-      const diff = target - now;
+      const now = Date.now(); // Current time in milliseconds
+      const diff = target - now; // Time difference in milliseconds
       if (diff <= 0) {
+        // If difference is 0 or negative, the race has begun
         setCountdown("Race started!");
         return;
       }
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      setCountdown(`${hours} hours ${minutes} minutes ${seconds} seconds`);
+      const hours = Math.floor(diff / (1000 * 60 * 60)); // Divide by (1000ms × 60s × 60min) = milliseconds in an hour
+      const minutes = Math.floor((diff / (1000 * 60)) % 60); // Divide by (1000ms × 60s), then use % 60 to get remainder after hours
+      const seconds = Math.floor((diff / 1000) % 60); // Divide by 1000ms, then use % 60 to get remainder after minutes
+      setCountdown(`${hours} hours ${minutes} minutes ${seconds} seconds`); // Sets the countdown state to display the formatted time string.
     };
 
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
-  }, [closestRace]);
+    updateCountdown(); // Initial call to set the countdown immediately
+    const interval = setInterval(updateCountdown, 1000); // Update every second
+    return () => clearInterval(interval); // Prevents memory leaks when component unmounts or race changes
+  }, [closestRace]); // Dependency array. Re-runs the effect whenever closestRace changes (different race selected).
 
   if (loadingCalendar) return <p>Loading...</p>;
   if (errorCalendar)
