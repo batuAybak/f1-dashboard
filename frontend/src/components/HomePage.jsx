@@ -52,7 +52,10 @@ export default function HomePage() {
   if (errorCalendar)
     return <p>Error loading calendar: {errorCalendar.message}</p>;
   if (!calendar) return <p>No calendar data found.</p>;
-  if (!closestRace) return <p>No upcoming race found.</p>;
+  if (!closestRace)
+    return (
+      <p>No upcoming races until {new Date().getFullYear() + 1} season.</p>
+    );
 
   return (
     <>
