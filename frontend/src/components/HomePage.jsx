@@ -54,7 +54,10 @@ export default function HomePage() {
   if (!calendar) return <p>No calendar data found.</p>;
   if (!closestRace)
     return (
-      <p>No upcoming races until {new Date().getFullYear() + 1} season.</p>
+      <p>
+        No upcoming races until {new Date().getFullYear() + 1} season calendar
+        is available.
+      </p>
     );
 
   return (
