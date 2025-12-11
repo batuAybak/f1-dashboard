@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useQuery from "../api/useQuery";
+import EndOfSeason from "./EndOfSeason";
 
 /**
  * HomePage displays a welcome message and a countdown to the next race.
@@ -17,6 +18,11 @@ export default function HomePage() {
   const closestRace = calendar?.find(
     (race) => new Date(race.date_start) > new Date()
   );
+
+  // If there is no closestRace or "closestRace year > current year", the season is considered ended
+  const isSeasonEnded =
+    !closestRace ||
+    new Date(closestRace.date_start).getFullYear() > new Date().getFullYear();
 
   // Countdown state for the next race
   const [countdown, setCountdown] = useState("");
@@ -52,13 +58,6 @@ export default function HomePage() {
   if (errorCalendar)
     return <p>Error loading calendar: {errorCalendar.message}</p>;
   if (!calendar) return <p>No calendar data found.</p>;
-  if (!closestRace)
-    return (
-      <p>
-        No upcoming races until {new Date().getFullYear() + 1} season calendar
-        is available.
-      </p>
-    );
 
   return (
     <>
@@ -71,24 +70,27 @@ export default function HomePage() {
           updates.
         </p>
       </div>
-
-      <div className="next-race-section">
-        <h2>🏁 Next Race 🏁</h2>
-        {closestRace && (
-          <div className="next-race-container">
-            <img
-              src={closestRace.image}
-              alt="race link"
-              className="next-race-image"
-            />
-            <div className="next-race-details">
-              <h4>{closestRace.meeting_official_name}</h4>
-              <p>{new Date(closestRace.date_start).toLocaleDateString()}</p>
-              <p>Till lights out and away we go: {countdown}</p>
+      {isSeasonEnded ? (
+        <EndOfSeason />
+      ) : (
+        <div className="next-race-section">
+          <h2>🏁 Next Race 🏁</h2>
+          {
+            <div className="next-race-container">
+              <img
+                src={closestRace.image}
+                alt="race link"
+                className="next-race-image"
+              />
+              <div className="next-race-details">
+                <h4>{closestRace.meeting_official_name}</h4>
+                <p>{new Date(closestRace.date_start).toLocaleDateString()}</p>
+                <p>Till lights out and away we go: {countdown}</p>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          }
+        </div>
+      )}
     </>
   );
 }
