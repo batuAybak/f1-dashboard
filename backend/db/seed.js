@@ -5,6 +5,7 @@ import { vehicleImages } from "./data/vehicleImages.js";
 import { raceCalendar } from "./data/raceCalendar.js";
 import { teamLogos } from "./data/teamLogos.js";
 import { addForumTopic, addPostToTopic } from "./queries/forum.js";
+import { drivers } from "./data/drivers.js";
 
 await db.connect();
 await seed();
@@ -25,23 +26,8 @@ async function seed() {
     "Carvajal"
   );
 
-  // Fetch the drivers from the API
-  const drivers = await fetch(
-    "https://api.openf1.org/v1/drivers?session_key=9912"
-  );
-  const driversData = await drivers.json();
-  // Push country codes into the driver objects
-  driversData.map((driver, index) => {
-    driver.country_code = country_codes[index];
-    if (driver.first_name === "Franco") {
-      //One driver has no img file from the api, so manually pushing it.
-      driver.headshot_url =
-        "https://media.formula1.com/image/upload/c_fill,g_face,w_150,h_150/q_auto/f_png/v1740000000/common/f1/2025/alpine/fracol01/2025alpinefracol01right.webp";
-    }
-  });
-
   // Iterate through the drivers and insert them into the database
-  for (const driver of driversData) {
+  for (const driver of drivers) {
     const firstName = driver.first_name;
     const lastName = driver.last_name;
     const teamName = driver.team_name;
@@ -56,19 +42,18 @@ async function seed() {
     );
   }
 
-  //Since there are 2 drivers from the same team,
-  //we need to get the unique team names and their colours
-  const teams = [...new Set(driversData.map((driver) => driver.team_name))];
-  const teamColors = [
-    ...new Set(driversData.map((driver) => driver.team_colour)),
-  ];
+  // Since there are 2 drivers from the same team, we need to get the unique team names and their colors
+  // Map will automatically overwrite duplicate team names, so we end up with unique team names and their corresponding colors
+  const teamAndColorMap = new Map(drivers.map((driver) => [driver.team_name, driver.team_color]));
+  const teamNamesAndColorsByName = [...teamAndColorMap].sort((teamA, teamB) => teamA[0].localeCompare(teamB[0]));
+
   // Iterate through the unique team names and their colours and insert them into the database
-  for (let i = 0; i < teams.length; i++) {
+  for (let i = 0; i < teamNamesAndColorsByName.length; i++) {
     await db.query(
       `INSERT INTO teams (team_name, team_color, vehicle_image, team_logos)
        VALUES ($1, $2, $3, $4)
        `,
-      [teams[i], teamColors[i], vehicleImages[i], teamLogos[i]]
+      [teamNamesAndColorsByName[i][0], teamNamesAndColorsByName[i][1], vehicleImages[i], teamLogos[i]]
     );
   }
 
