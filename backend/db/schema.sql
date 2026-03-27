@@ -59,9 +59,8 @@ CREATE TABLE calendar(
   image text NOT NULL
 );
 
--- Set starting value for meeting_key serial to 1254
-ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1254;
-
+-- Set starting value for meeting_key serial to 1279
+ALTER SEQUENCE calendar_meeting_key_seq RESTART WITH 1279;
 
 CREATE TABLE forum_topics(
   id serial PRIMARY KEY,
