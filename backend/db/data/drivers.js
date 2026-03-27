@@ -265,12 +265,3 @@ export const drivers = [
         "country_code": "GBR"
     }
 ]
-
-// 1-full
-// 2-avatar
-// 3-mine
-// https://media.formula1.com/image/upload/c_fill,w_720/q_auto/v1740000001/common/f1/2026/racingbulls/arvlin01/2026racingbullsarvlin01right.webp
-// https://media.formula1.com/image/upload/c_lfill,w_64/q_auto/d_common:f1:2026:fallback:driver:2026fallbackdriverright.webp/v1740000001/common/f1/2026/racingbulls/arvlin01/2026racingbullsarvlin01right.webp
-// https://media.formula1.com/image/upload/c_fill,g_face,w_150,h_150/q_auto/f_png/v1740000000/common/f1/2025/alpine/fracol01/2025alpinefracol01right.webp
-
-// https://media.formula1.com/image/upload/c_fill,g_face,w_150,h_150/q_auto/f_png/v1740000001/common/f1/2026/racingbulls/arvlin01/2026racingbullsarvlin01right.webp
