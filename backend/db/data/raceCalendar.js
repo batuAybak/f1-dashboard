@@ -39,32 +39,6 @@ export const raceCalendar = [
         "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Japan.webp"
     },
     {
-        "circuit_short_name": "Sakhir",
-        "meeting_code": "BRN",
-        "location": "Sakhir",
-        "country_code": "BRN",
-        "country_name": "Bahrain",
-        "meeting_name": "Bahrain Grand Prix",
-        "meeting_official_name": "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2026",
-        "gmt_offset": "03:00:00",
-        "date_start": "2026-04-12T15:00:00+00:00",
-        "year": 2026,
-        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Bahrain.webp"
-    },
-    {
-        "circuit_short_name": "Jeddah",
-        "meeting_code": "KSA",
-        "location": "Jeddah",
-        "country_code": "KSA",
-        "country_name": "Saudi Arabia",
-        "meeting_name": "Saudi Arabian Grand Prix",
-        "meeting_official_name": "FORMULA 1 STC SAUDI ARABIAN GRAND PRIX 2026",
-        "gmt_offset": "03:00:00",
-        "date_start": "2026-04-19T17:00:00+00:00",
-        "year": 2026,
-        "image": "https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/content/dam/fom-website/2018-redesign-assets/Racehub%20header%20images%2016x9/Saudi_Arabia.webp"
-    },
-    {
         "circuit_short_name": "Miami",
         "meeting_code": "USA",
         "location": "Miami",
