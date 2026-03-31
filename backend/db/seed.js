@@ -1,6 +1,5 @@
 import db from "#db/client";
 import { createUser } from "#db/queries/users";
-import { country_codes } from "./data/countryCodes.js";
 import { vehicleImages } from "./data/vehicleImages.js";
 import { raceCalendar } from "./data/raceCalendar.js";
 import { teamLogos } from "./data/teamLogos.js";
