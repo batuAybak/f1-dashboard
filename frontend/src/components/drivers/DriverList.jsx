@@ -1,20 +1,14 @@
-import useQuery from "../../api/useQuery.js";
-import { useNavigate } from "react-router";
+import { useNavigate } from 'react-router'
 
 /**
  * DriverList renders a card for a single driver, showing their info and team color.
  * Navigates to the driver's standings page on click.
  */
-export default function DriverList({ driver }) {
-  // Fetch all teams to get team color
-  const { data: teams, loading, error } = useQuery("/teams", "teams");
-  const navigate = useNavigate();
-
-  if (loading || !teams) return <p>Loading...</p>;
-  if (error) return <p>Error! {error}</p>;
+export default function DriverList({ driver, teams }) {
+  const navigate = useNavigate()
 
   // Find the team for this driver
-  const team = teams.find((team) => team.team_name == driver.team_name);
+  const team = teams.find((team) => team.team_name == driver.team_name)
 
   return (
     <li
@@ -27,11 +21,7 @@ export default function DriverList({ driver }) {
     >
       <div className="driver-picture-number">
         {/* Driver headshot */}
-        <img
-          src={driver?.headshot_url}
-          alt={driver?.first_name}
-          className="driver-headshot"
-        />
+        <img src={driver?.headshot_url} alt={driver?.first_name} className="driver-headshot" />
         {/* Driver number */}
         <h3 className="driver-number">{driver?.driver_number}</h3>
       </div>
@@ -46,5 +36,5 @@ export default function DriverList({ driver }) {
         <p className="driver-country">{driver?.country_code}</p>
       </div>
     </li>
-  );
+  )
 }
