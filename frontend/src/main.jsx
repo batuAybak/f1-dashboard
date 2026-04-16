@@ -18,6 +18,7 @@ import "../styles/darkLightTheme.css";
 import "../styles/loginPage.css";
 import "../styles/registrationPage.css";
 import "../styles/footer.css";
+import "../styles/chatBot.css";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
