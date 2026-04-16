@@ -12,6 +12,7 @@ import teamsRouter from "#api/teams";
 import calendarRouter from "#api/calendar";
 import forumRouter from "#api/forum";
 import standingsRouter from "#api/standings";
+import llmRouter from "#api/llm";
 
 app.use(cors({ origin: process.env.CORS_ORIGIN ?? /localhost/ }));
 
@@ -30,6 +31,7 @@ app.use("/teams", teamsRouter);
 app.use("/calendar", calendarRouter);
 app.use('/forum', forumRouter)
 app.use("/standings", standingsRouter);
+app.use("/ask", llmRouter);
 
 app.use(handlePostgresErrors);
 app.use((err, req, res, next) => {
