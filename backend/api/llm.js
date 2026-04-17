@@ -76,10 +76,6 @@ llmRouter
         },
         input: [...history, { role: 'user', content: message }]
       });
-      console.log('input')
-      console.log([...history, { role: 'user', content: message }])
-      console.log('input')
-      console.log([response.model, response.usage])
 
       const reply = response.output_text
       res.send({
