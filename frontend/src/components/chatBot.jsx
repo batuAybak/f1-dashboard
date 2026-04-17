@@ -1,11 +1,38 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApi } from '../api/ApiContext'
 
+const STORAGE_KEY = 'f1-dashboard-chat-history'
+const MAX_HISTORY_MESSAGES = 10
+const MAX_INPUT_LENGTH = 500
 const SUGGESTED_PROMPTS = [
   'Who won the last race?',
   'Which team leads the constructors standings?',
   'Give me a quick summary of this season so far.'
 ]
+
+const WELCOME_MESSAGE = {
+  role: 'assistant',
+  content: 'Hi! I am your F1 Assistant. Do you have any questions about Formula 1?'
+}
+
+function loadStoredMessages() {
+  if (typeof window === 'undefined') return [WELCOME_MESSAGE]
+
+  try {
+    const stored = JSON.parse(window.sessionStorage.getItem(STORAGE_KEY) || 'null')
+    if (!Array.isArray(stored) || !stored.length) return [WELCOME_MESSAGE]
+
+    return stored.filter(
+      (message) =>
+        message &&
+        (message.role === 'user' || message.role === 'assistant') &&
+        typeof message.content === 'string' &&
+        message.content.trim()
+    )
+  } catch {
+    return [WELCOME_MESSAGE]
+  }
+}
 
 export default function ChatBot() {
   // Request function from our API context to send messages to the backend.
@@ -17,12 +44,7 @@ export default function ChatBot() {
   // Prevents duplicate requests while waiting for the assistant reply.
   const [isSending, setIsSending] = useState(false)
   // Stores full conversation history for two-way chat rendering.
-  const [messages, setMessages] = useState([
-    {
-      role: 'assistant',
-      content: 'Hi! I am your F1 Assistant. Do you have any questions about Formula 1?'
-    }
-  ])
+  const [messages, setMessages] = useState(loadStoredMessages)
   // Surface request errors to the user inside the chat panel.
   const [error, setError] = useState('')
   // Enables auto-scroll so the newest message is always visible.
@@ -37,6 +59,16 @@ export default function ChatBot() {
     listRef.current.scrollTop = listRef.current.scrollHeight
   }, [messages, isOpen])
 
+  useEffect(() => {
+    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages))
+  }, [messages])
+
+  const clearConversation = () => {
+    setError('')
+    setInput('')
+    setMessages([WELCOME_MESSAGE])
+  }
+
   // Sends a user message to the backend and appends the assistant response.
   const sendMessage = async (messageText) => {
     const text = messageText.trim()
@@ -50,7 +82,10 @@ export default function ChatBot() {
     try {
       const result = await request('/ask', {
         method: 'POST',
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({
+          message: text,
+          history: messages.slice(-MAX_HISTORY_MESSAGES)
+        })
       })
 
       //if the response is an empty string or just whitespace, show a default message instead
@@ -68,7 +103,7 @@ export default function ChatBot() {
         ...prev,
         {
           role: 'assistant',
-          content: 'I hit an error while replying. Please try again.'
+          content: 'I hit an error while replying. Please try again in a moment.'
         }
       ])
     } finally {
@@ -90,11 +125,21 @@ export default function ChatBot() {
           <header className="chatbot-header">
             <div>
               <strong>F1 Assistant</strong>
-              <p>Live Q&A</p>
+              <p>Context-aware F1 Q&amp;A</p>
             </div>
-            <button className="chatbot-close" type="button" onClick={() => setIsOpen(false)} aria-label="Collapse chat">
-              x
-            </button>
+            <div className="chatbot-header-actions">
+              <button className="chatbot-reset" type="button" onClick={clearConversation} disabled={isSending}>
+                Clear
+              </button>
+              <button
+                className="chatbot-close"
+                type="button"
+                onClick={() => setIsOpen(false)}
+                aria-label="Collapse chat"
+              >
+                x
+              </button>
+            </div>
           </header>
 
           <div className="chatbot-messages" ref={listRef}>
@@ -129,12 +174,15 @@ export default function ChatBot() {
               onChange={(event) => setInput(event.target.value)}
               placeholder="Ask about F1..."
               aria-label="Type your question"
+              maxLength={MAX_INPUT_LENGTH}
               disabled={isSending}
             />
             <button type="submit" disabled={disabled}>
               Send
             </button>
           </form>
+
+          <p className="chatbot-footnote">Live search is used only when recent F1 information is needed.</p>
         </section>
       )}
 
