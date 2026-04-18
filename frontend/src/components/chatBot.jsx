@@ -90,7 +90,7 @@ export default function ChatBot() {
 
       //if the response is an empty string or just whitespace, show a default message instead
       const reply =
-        typeof result?.reply === 'string' && result.reply.trim() //
+        typeof result?.reply === 'string' && result.reply.trim() // Check if the reply is a non-empty string after trimming whitespace.
           ? result.reply
           : 'I could not generate an answer for that yet.'
 
