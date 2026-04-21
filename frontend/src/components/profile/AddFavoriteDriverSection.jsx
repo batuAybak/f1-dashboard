@@ -1,12 +1,10 @@
 import useMutation from '../../api/useMutation'
-import { useTheme } from '../ThemeContext'
 
 /**
  * AddFavoriteDriverSection provides a dropdown to select and add a favorite driver.
  * Submits the selected driver using a mutation hook.
  */
-export default function AddFavoriteDriverSection({ drivers }) {
-  const { theme, oppositeTheme } = useTheme()
+export default function AddFavoriteDriverSection({ drivers, theme, oppositeTheme }) {
   const { mutate: addFavoriteDriver } = useMutation('POST', `/drivers`, ['profile']) // Expects "driver_number" to be sent as request body
 
   return (

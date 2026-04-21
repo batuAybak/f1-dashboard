@@ -15,7 +15,7 @@ export default function ProfilePage() {
   const { data: user, loading: userLoading, error: userError } = useQuery('/users/profile', 'profile')
   const { data: drivers, loading: driversLoading, error: driversError } = useQuery('/drivers', 'drivers')
   const { data: teams, loading: teamsLoading, error: teamsError } = useQuery('/teams', 'teams')
-  const { oppositeTheme } = useTheme()
+  const { theme, oppositeTheme } = useTheme()
 
   const userFavoriteDriver = user?.userFavoriteDriver
   const userFavoriteTeam = user?.userFavoriteTeam
@@ -48,7 +48,7 @@ export default function ProfilePage() {
         <section className="favorite-driver">
           <h3>Favorite Driver</h3>
           {userFavoriteDriver === undefined ? (
-            <AddFavoriteDriverSection drivers={drivers} />
+            <AddFavoriteDriverSection drivers={drivers} theme={theme} oppositeTheme={oppositeTheme} />
           ) : (
             <>
               {/* Show favorite driver and remove button */}
@@ -65,7 +65,7 @@ export default function ProfilePage() {
         <section className="favorite-team">
           <h3>Favorite Team</h3>
           {userFavoriteTeam === undefined ? (
-            <AddFavoriteTeamSection teams={teams} />
+            <AddFavoriteTeamSection teams={teams} theme={theme} oppositeTheme={oppositeTheme} />
           ) : (
             <>
               {/* Show favorite team and remove button */}

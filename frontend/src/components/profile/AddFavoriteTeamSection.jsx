@@ -1,12 +1,10 @@
 import useMutation from '../../api/useMutation'
-import { useTheme } from '../ThemeContext'
 
 /**
  * AddFavoriteTeamSection provides a dropdown to select and add a favorite team.
  * Submits the selected team using a mutation hook.
  */
-export default function AddFavoriteTeamSection({ teams }) {
-  const { theme, oppositeTheme } = useTheme()
+export default function AddFavoriteTeamSection({ teams, theme, oppositeTheme }) {
   const { mutate: addFavoriteTeam } = useMutation('POST', '/teams', ['profile']) // Expects team "id" to be sent as a request body
 
   return (
