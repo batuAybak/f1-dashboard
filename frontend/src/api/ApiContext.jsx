@@ -29,9 +29,9 @@ export function ApiProvider({ children }) {
     return result
   }
 
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState({})
   const provideTag = (tag, query) => {
-    setTags({ ...tags, [tag]: query })
+    setTags((tags) => ({ ...tags, [tag]: query }))
   }
   const invalidateTags = (tagsToInvalidate) => {
     tagsToInvalidate.forEach((tag) => tags[tag]?.())
