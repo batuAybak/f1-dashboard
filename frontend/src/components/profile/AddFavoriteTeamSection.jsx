@@ -1,23 +1,13 @@
-import useMutation from "../../api/useMutation";
-import useQuery from "../../api/useQuery";
-import { useTheme } from "../ThemeContext";
+import useMutation from '../../api/useMutation'
+import { useTheme } from '../ThemeContext'
 
 /**
  * AddFavoriteTeamSection provides a dropdown to select and add a favorite team.
  * Submits the selected team using a mutation hook.
  */
-export default function AddFavoriteTeamSection() {
-  const { theme, oppositeTheme } = useTheme();
-  // Fetch all teams
-  const { data: teams, loading, error } = useQuery("/teams", "teams");
-  // Mutation hook for adding favorite team
-  const { mutate: addFavoriteTeam } = useMutation("POST", "/teams", [
-    "profile",
-  ]); // Expects team "id" to be sent as a request body
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!teams) return <p>No teams found.</p>;
+export default function AddFavoriteTeamSection({ teams }) {
+  const { theme, oppositeTheme } = useTheme()
+  const { mutate: addFavoriteTeam } = useMutation('POST', '/teams', ['profile']) // Expects team "id" to be sent as a request body
 
   return (
     <>
@@ -54,5 +44,5 @@ export default function AddFavoriteTeamSection() {
         </ul>
       </div>
     </>
-  );
+  )
 }

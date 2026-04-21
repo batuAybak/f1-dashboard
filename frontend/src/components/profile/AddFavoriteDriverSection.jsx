@@ -1,23 +1,13 @@
-import useMutation from "../../api/useMutation";
-import useQuery from "../../api/useQuery";
-import { useTheme } from "../ThemeContext";
+import useMutation from '../../api/useMutation'
+import { useTheme } from '../ThemeContext'
 
 /**
  * AddFavoriteDriverSection provides a dropdown to select and add a favorite driver.
  * Submits the selected driver using a mutation hook.
  */
-export default function AddFavoriteDriverSection() {
-  const { theme, oppositeTheme } = useTheme();
-  // Fetch all drivers
-  const { data: drivers, loading, error } = useQuery("/drivers", "drivers");
-  // Mutation hook for adding favorite driver
-  const { mutate: addFavoriteDriver } = useMutation("POST", `/drivers`, [
-    "profile",
-  ]); // Expects "driver_number" to be sent as request body
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!drivers) return <p>No drivers found.</p>;
+export default function AddFavoriteDriverSection({ drivers }) {
+  const { theme, oppositeTheme } = useTheme()
+  const { mutate: addFavoriteDriver } = useMutation('POST', `/drivers`, ['profile']) // Expects "driver_number" to be sent as request body
 
   return (
     <>
@@ -39,9 +29,7 @@ export default function AddFavoriteDriverSection() {
               <button
                 className="dropdown-item dropdown-item-driver"
                 type="button"
-                onClick={() =>
-                  addFavoriteDriver({ driver_number: driver.driver_number })
-                }
+                onClick={() => addFavoriteDriver({ driver_number: driver.driver_number })}
               >
                 <img
                   className="dropdown-driver-headshot"
@@ -55,5 +43,5 @@ export default function AddFavoriteDriverSection() {
         </ul>
       </div>
     </>
-  );
+  )
 }

@@ -12,7 +12,9 @@ import { useTheme } from '../ThemeContext.jsx'
  */
 export default function ProfilePage() {
   // Fetch user profile with favorite driver and team
-  const { data: user, loading, error } = useQuery('/users/profile', 'profile')
+  const { data: user, loading: userLoading, error: userError } = useQuery('/users/profile', 'profile')
+  const { data: drivers, loading: driversLoading, error: driversError } = useQuery('/drivers', 'drivers')
+  const { data: teams, loading: teamsLoading, error: teamsError } = useQuery('/teams', 'teams')
   const { oppositeTheme } = useTheme()
 
   const userFavoriteDriver = user?.userFavoriteDriver
@@ -27,8 +29,10 @@ export default function ProfilePage() {
   const { mutate: removeDriver } = useMutation('DELETE', `/drivers/${userFavoriteDriver?.driver_number}`, ['profile'])
 
   if (!user) return <p>No user data</p>
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>Error! {error}</p>
+  if (userLoading || driversLoading || teamsLoading) return <p>Loading...</p>
+  if (userError) return <p>Error! {userError}</p>
+  if (driversError) return <p>Error! {driversError}</p>
+  if (teamsError) return <p>Error! {teamsError}</p>
 
   return (
     <div className="profile-main">
@@ -44,11 +48,11 @@ export default function ProfilePage() {
         <section className="favorite-driver">
           <h3>Favorite Driver</h3>
           {userFavoriteDriver === undefined ? (
-            <AddFavoriteDriverSection />
+            <AddFavoriteDriverSection drivers={drivers} />
           ) : (
             <>
               {/* Show favorite driver and remove button */}
-              <DriverList driver={userFavoriteDriver} teamName={userFavoriteDriver.team_name} />
+              <DriverList driver={userFavoriteDriver} teams={teams} />
               <br />
               <button className={`btn btn-outline-${oppositeTheme} btn-sm`} onClick={() => removeDriver()}>
                 Remove Favorite Driver
@@ -61,11 +65,11 @@ export default function ProfilePage() {
         <section className="favorite-team">
           <h3>Favorite Team</h3>
           {userFavoriteTeam === undefined ? (
-            <AddFavoriteTeamSection />
+            <AddFavoriteTeamSection teams={teams} />
           ) : (
             <>
               {/* Show favorite team and remove button */}
-              <TeamList team={userFavoriteTeam} />
+              <TeamList team={userFavoriteTeam} drivers={drivers} />
               <br />
               <button className={`btn btn-outline-${oppositeTheme} btn-sm`} onClick={() => removeTeam()}>
                 Remove Favorite Team
